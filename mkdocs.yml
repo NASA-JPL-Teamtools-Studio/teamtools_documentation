@@ -1,0 +1,47 @@
+site_name: Teamtools Studio Documentation
+site_url: https://github.jpl.nasa.gov/pages/teamtools-studio/teamtools-documentation/
+nav:
+  - Home: index.md
+  - About: about.md
+  - Project Architecture: architecture.md
+  - Design Philosophy: philosophy.md
+  - Repositories:
+      - Dante: repositories/tts_dante.md
+      - Data Utilities: repositories/tts_data_utils.md
+      - Dexter: repositories/tts_dexter.md
+      - DTAT: repositories/tts_dtat.md
+      - FRESH: repositories/tts_fresh.md
+      - HTML Utilities: repositories/tts_html_utils.md
+      - Papertrail: repositories/tts_papertrail.md
+      - TOWER: repositories/tts_tower.md
+      - TTS Dictionary Interface: repositories/tts_dictionary_interface.md
+      - TTS Plan: repositories/tts_plan.md
+      - TTS Seq: repositories/tts_seq.md
+      - TTS Starter Tempalte: repositories/tts_starter_template.md
+      - TTS Spice: repositories/tts_spice.md
+      - TTS Utilities: repositories/tts_utilities.md
+  - Collaboration:
+      - Start here: collaboration/collaboration.md 
+      - Fundamental Concepts: collaboration/fudamental_concepts.md
+      - Initial installation: collaboration/install.md
+      - Cookbooks and Demos: collaboration/cookbooks.md
+      - Style Primer: collaboration/style_primer.md
+      - Styles, Norms, and Best Practices: collaboration/styles_et_al.md
+      - Documentation Practices: collaboration/documentation.md
+      - Verification and Validation: collaboration/verification_and_validation.md
+      - Testing Practices: collaboration/testing.md
+      - Releases: collaboration/releases.md
+      - Training: training.md
+      - Roadmap: collaboration/roadmap.md
+      - Governance: collaboration/governance.md
+      - Licensing: collaboration/licence.md
+  - Reference Project:
+      - DemoSat Reference Project: reference_project/demosat_description.md
+      - DemoSat Adaptation Libraries: reference_project/demosat_libraries.md
+      - DemoSat F-Prime Build: reference_project/fprime.md
+theme:
+  name: readthedocs
+  custom_dir: custom_theme
+  favicon: assets/favicon.png
+plugins:
+  - mermaid2

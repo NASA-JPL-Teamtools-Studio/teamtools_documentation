@@ -1,0 +1,43 @@
+# Teamtools Data Utilities
+
+![Project logo](https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/raw/main/docs/images/tts_image_artifacts/data_utils.png)
+
+### Overview
+
+Data Utilties is one of the central building blocks of the Teamtools Studio. It is primarily a means of organizing
+and tracking the changes in 2D data (think spreadsheets). It is used as the primary data structure in Tower and Dexter,
+and is used liberally elsewhere throughout the TTS project.
+
+It is a reality that much of Systems Engineering is executed via spreadsheets and tables. They are the media in which 
+the most SEs are the most comfortable, so data utils provides methods to read, write, manipulate, convert, and mange tabular
+data. It goes beyond a library like Pandas by providing a core DataContainer class and examples of extensions of it to
+provide the custom behavior needed for each bespoke data source.
+
+For cases where data is too complex for a single 2D table, Data Utilities also handles the nesting of tables where each
+row in a table can be associated with a subtable.
+
+Data Utilities also provides significant quality of life functionality for diffing containers (including visual diff) and
+visualizing them in custom ways in with HTML, Excel, and DOCX output styles.
+
+Additionally, Data Utilities provides a lorem ipsum data generation feature that allows you to quickly create containers with semi-realistic dummy data for prototyping and testing purposes.
+
+### Projects Currently Supported
+
+* Europa Clipper
+* Mars 2020/Perseverance
+* Mars Sample Return/Sample Retrieval Lander
+* Mars Science Laboratory/Curiosity
+* Mars Reconnaisance Orbiter
+* NISAR
+* Orbiting Carbon Observatory 2 (OCO-2)
+
+## Architecture
+
+### TTS dependencies
+
+* Teamtools Studio Utilities
+* HTML Utilites
+
+
+---
+**Repository Links:** <a href="https://nasa-jpl-teamtools-studio.github.io/tts_data_utils/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/data_utils/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/data_utils" target="_blank" rel="noopener noreferrer">Source</a>

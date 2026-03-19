@@ -1,0 +1,14 @@
+FROM python:3.11-slim
+
+# 1. Install git and ssh-client
+RUN apt-get update && apt-get install -y git openssh-client && rm -rf /var/lib/apt/lists/*
+
+# 2. Add JPL GitHub to known_hosts so it doesn't prompt for confirmation
+RUN mkdir -p -m 0700 ~/.ssh && \
+    ssh-keyscan github.jpl.nasa.gov >> ~/.ssh/known_hosts
+
+WORKDIR /app
+COPY src/collector.py .
+RUN mkdir -p docs/projects
+
+CMD ["python", "collector.py"]
