@@ -53,4 +53,4 @@ Overall manager of the project with final authority over all key decisions when 
 Much of this governance model was adapted from AMMOS SLIM who themselves adapted it from other notable open source projects including [node.js](https://github.com/nodejs/node/blob/main/GOVERNANCE.md), [OpenSSL](https://www.openssl.org/policies/omc-bylaws.html), [PostgresQL](https://www.postgresql.org/developer/), and [OpenMCT](https://github.com/nasa/openmct/blob/master/CONTRIBUTING.md). We would like to thank those projects for setting the foundation upon which this model was built.
 
 ---
-<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools-documentation/blob/main/docs/collaboration/governance.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>
+<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/collaboration/governance.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>

@@ -5,4 +5,4 @@ At the moment this is mostly aspirational. But we have plans to implement a simp
 At the moment it's just a twinkle in our eyes, but we are hoping to make some progress soon.
 
 ---
-<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools-documentation/blob/main/docs/reference_project/fprime.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>
+<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/reference_project/fprime.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>
