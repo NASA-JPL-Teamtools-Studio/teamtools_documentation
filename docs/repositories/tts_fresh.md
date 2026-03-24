@@ -54,4 +54,4 @@ without distraction by unrelated technical issues.
 * TTS Utilities
 
 ---
-**Repository Links:** <a href="https://nasa-jpl-teamtools-studio.github.io/tts-fresh/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts-fresh/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts-fresh" target="_blank" rel="noopener noreferrer">Source</a>
+**Repository Links:** <a href="nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_fresh/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_fresh/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_fresh" target="_blank" rel="noopener noreferrer">Source</a>

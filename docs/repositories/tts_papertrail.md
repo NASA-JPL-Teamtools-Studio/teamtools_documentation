@@ -43,4 +43,4 @@ Papertrail also provides a common logging interface for all projects to use so l
 * HTML Utilities
 
 ---
-**Repository Links:** <a href="https://nasa-jpl-teamtools-studio.github.io/tts_papertrail/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/papertrail/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/papertrail" target="_blank" rel="noopener noreferrer">Source</a>
+**Repository Links:** <a href="nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_papertrail/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_papertrail/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_papertrail" target="_blank" rel="noopener noreferrer">Source</a>
