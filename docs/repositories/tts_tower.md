@@ -50,4 +50,4 @@ When defining a checker code, it is also possible to attach arbitrary HTML code 
 * HTML Utilities
 
 ---
-**Repository Links:** <a href="https://nasa-jpl-teamtools-studio.github.io/Tower/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/Tower/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/Tower" target="_blank" rel="noopener noreferrer">Source</a>
+**Repository Links:** <a href="https://nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_tower/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_tower/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_tower" target="_blank" rel="noopener noreferrer">Source</a>
