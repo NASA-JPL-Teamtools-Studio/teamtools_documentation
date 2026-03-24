@@ -54,7 +54,6 @@ jobs:
           if [ -s broken_links.txt ]; then
             gh issue create \
               --title "⚠️ Broken Links Detected: $(date +'%Y-%m-%d')" \
-              --assignee "mrmuszynski" \
               --body "## Daily Health Check Failed
               The link crawler found broken links. 
               
