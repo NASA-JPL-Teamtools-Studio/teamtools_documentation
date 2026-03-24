@@ -47,8 +47,9 @@ jobs:
           The **Triage Team** has been notified of this new issue.
           
           **GSE Checklist:**
-          - [ ] Review 404 report (if applicable).
-          - [ ] Verify metadata and priority labels.
-          - [ ] Reassign to a specific subsystem lead if necessary.
+          - [ ] Assess whether ticket belongs in this repo
+          - [ ] Assign criticality
+          - [ ] Assign developer 
+          = [ ] Remove triage label
           
-          *This issue was processed by the Studio Triage App.*"
+          *This issue was processed by the TTS Triage Bot.*"
