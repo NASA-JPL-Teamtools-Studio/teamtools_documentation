@@ -29,4 +29,4 @@ overcome them.
 * TTS Utilities
 
 ---
-**Repository Links:** <a href="nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_dtat/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_dtat/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_dtat" target="_blank" rel="noopener noreferrer">Source</a>
+**Repository Links:** <a href="https://nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_dtat/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_dtat/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_dtat" target="_blank" rel="noopener noreferrer">Source</a>

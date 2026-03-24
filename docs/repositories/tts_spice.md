@@ -84,4 +84,4 @@ Depending on your mission needs, you might want to add:
 - Instrument kernels for specific missions
 
 ---
-**Repository Links:** <a href="nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_spice/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_spice/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_spice" target="_blank" rel="noopener noreferrer">Source</a>
+**Repository Links:** <a href="https://nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_spice/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_spice/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_spice" target="_blank" rel="noopener noreferrer">Source</a>

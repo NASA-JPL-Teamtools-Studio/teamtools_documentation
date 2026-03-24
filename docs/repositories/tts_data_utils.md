@@ -40,4 +40,4 @@ Additionally, Data Utilities provides a lorem ipsum data generation feature that
 
 
 ---
-**Repository Links:** <a href="nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_data_utils/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_data_utils/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_data_utils" target="_blank" rel="noopener noreferrer">Source</a>
+**Repository Links:** <a href="https://nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_data_utils/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_data_utils/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_data_utils" target="_blank" rel="noopener noreferrer">Source</a>
