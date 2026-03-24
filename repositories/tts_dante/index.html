@@ -59,12 +59,6 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#projects-currently-supported">Projects Currently Supported</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#tts-dependencies">TTS dependencies</a>
-    </li>
-        </ul>
-    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../tts_data_utils/">Data Utilities</a>
@@ -162,14 +156,11 @@
 <p>Derivation Assistant for Novel Telemetry Expression</p>
 <p><img alt="Project logo" src="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/raw/main/docs/images/tts_image_artifacts/dante.png" /></p>
 <h3 id="overview">Overview</h3>
-<p>Dante is the TTS answer to when a system that produces data doesn't produce the data that you want. The most typical need for Dante at JPL
-is creating ground derived channels if those are not yet available in your project's GDS for any reason.</p>
-<p>For those outside of JPL, a primer... AMPCS is the software used to connect with the DSN, decomm telemetry, and turn it into time
-series data. AMPCS has a notion of "ground derived channels" (think dn to eu conversion as a simple example). AMPCS can combine
-data from the spacecraft to make new channels that the spacecraft has no knowledge of, and Dante serves a very similar funciton.</p>
-<p>This is not meant to be a replacement for AMPCS Ground Derived Channels, but as an admission that the AMPCS GDC infrastructure 
-has its pros as well as cons. Pseudo-channels in this library will NEVER flow back into legacy CHILL databases, but may be 
-put into tools like EAS's State Data Store for query later. </p>
+<p>Dante is the TTS answer for when a system that produces data doesn't produce the data that you want. </p>
+<p>The most typical need for Dante at JPL is creating ground derived channels if those are not yet available in your project's GDS for any reason.</p>
+<p>For those outside of JPL, a primer... AMPCS is the software used to connect with the DSN, decommute telemetry, and turn it into time series data. AMPCS has a notion of "ground derived channels" (think dn to eu conversion as a simple example). AMPCS can combine data from the spacecraft to make new channels that the spacecraft has no knowledge of, and Dante serves a very similar funciton.</p>
+<p>A common cartoon example is a spacecraft that produces current data and voltage data. Dante could be used to create a power channel because P=I*V.</p>
+<p>This is not meant to be a replacement for AMPCS Ground Derived Channels, but as an admission that the AMPCS GDC infrastructure  has its pros as well as cons. Pseudo-channels in this library will NEVER flow back into legacy CHILL databases, but may be  put into tools like EAS's State Data Store for query later. </p>
 <p>Reasons you'd want to have Dante:</p>
 <ul>
 <li>GDS budgets and schedules are such that your Java-derived channel is not ready and you need something like it NOW</li>
@@ -184,16 +175,11 @@ put into tools like EAS's State Data Store for query later. </p>
 </ul>
 <h3 id="projects-currently-supported">Projects Currently Supported</h3>
 <ul>
-<li>NISAR Prototype</li>
-</ul>
-<h2 id="architecture">Architecture</h2>
-<h3 id="tts-dependencies">TTS dependencies</h3>
-<ul>
-<li>TTS Utilities</li>
-<li>TTS Data Utils</li>
+<li>NISAR (Prototype)</li>
+<li>Sample Retrieval Lander (Prototype)</li>
 </ul>
 <hr />
-<p><strong>Repository Links:</strong> <a href="nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_dante/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_dante/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_dante" target="_blank" rel="noopener noreferrer">Source</a></p>
+<p><strong>Repository Links:</strong> <a href="https://nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_dante/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_dante/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_dante" target="_blank" rel="noopener noreferrer">Source</a></p>
               
             </div>
           </div><footer>
