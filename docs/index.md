@@ -28,4 +28,4 @@ Every page in the documentation includes a link at the bottom that takes you to 
 For more information, the JPL team can be reached via teamtools-studio@jpl.nasa.gov.
 
 ---
-<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools-documentation/blob/main/docs/index.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>
+<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/index.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>

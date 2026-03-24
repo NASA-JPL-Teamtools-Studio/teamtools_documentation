@@ -7,4 +7,4 @@ For seasoned developers this page may be remedial, but for those who are new to 
 
 
 ---
-<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools-documentation/blob/main/docs/collaboration/fudamental_concepts.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>
+<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/collaboration/fudamental_concepts.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>

@@ -34,4 +34,4 @@ In order to have as coherent a product as possible, the Teamtools Studio has mad
 
 
 ---
-<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools-documentation/blob/main/docs/philosophy.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>
+<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/philosophy.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>

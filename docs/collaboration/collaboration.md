@@ -30,4 +30,4 @@ needed.
 
 
 ---
-<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools-documentation/blob/main/docs/collaboration/collaboration.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>
+<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/collaboration/collaboration.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>

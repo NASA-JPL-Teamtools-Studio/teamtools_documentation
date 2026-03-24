@@ -58,4 +58,4 @@ documetnation, where we discuss the DemoSat project, which is a cartoon spacecra
 tools with a minimally realistic adaption layer (since many of these tools make little sense when only looking at the core layer).
 
 ---
-<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools-documentation/blob/main/docs/about.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>
+<a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/about.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>

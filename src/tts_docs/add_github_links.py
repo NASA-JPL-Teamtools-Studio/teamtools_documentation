@@ -7,11 +7,11 @@ corresponding file in the GitHub repository. This makes it easy for users to edi
 or comment on the documentation.
 
 Usage:
-    python add_github_links.py --docs-dir docs --repo-url "https://github.jpl.nasa.gov/teamtools-studio/teamtools-documentation" --branch main
+    python add_github_links.py --docs-dir docs --repo-url "https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation" --branch main
 
 Options:
     --docs-dir: Path to the docs directory (default: docs)
-    --repo-url: URL of the GitHub repository (default: https://github.jpl.nasa.gov/teamtools-studio/teamtools-documentation)
+    --repo-url: URL of the GitHub repository (default: https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation)
     --branch: Branch name (default: main)
 
 Note:
@@ -90,7 +90,7 @@ def main():
     """Main function to add GitHub edit links to markdown files."""
     parser = argparse.ArgumentParser(description='Add GitHub edit links to markdown files.')
     parser.add_argument('--docs-dir', default='docs', help='Path to the docs directory')
-    parser.add_argument('--repo-url', default='https://github.jpl.nasa.gov/teamtools-studio/teamtools-documentation', 
+    parser.add_argument('--repo-url', default='https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation', 
                         help='URL of the GitHub repository')
     parser.add_argument('--branch', default='main', help='Branch name')
     
