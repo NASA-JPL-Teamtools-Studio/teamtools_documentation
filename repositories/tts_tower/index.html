@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_tower/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>TOWER - Teamtools Studio Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "TOWER";
+        var mkdocs_page_input_path = "repositories/tts_tower.md";
+        var mkdocs_page_url = "/studio/teamtools-documentation/repositories/tts_tower/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Teamtools Studio Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../architecture/">Project Architecture</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../philosophy/">Design Philosophy</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Repositories</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../tts_dante/">Dante</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tts_data_utils/">Data Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tts_dexter/">Dexter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tts_dtat/">DTAT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tts_fresh/">FRESH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tts_html_utils/">HTML Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tts_papertrail/">Papertrail</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">TOWER</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inputs-checks-dispositions-and-reports">Inputs, Checks, Dispositions, and Reports.</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#input-layer">Input Layer:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#checker-layer">Checker Layer:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rule-result-layer-and-dispostions">Rule Result Layer (and dispostions):</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#elegant-error-handling">Elegant Error Handling</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#unit-testing-framework">Unit Testing Framework</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reporting">Reporting</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#projects-currently-supported">Projects Currently Supported</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#tts-dependencies">TTS dependencies</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tts_dictionary_interface/">TTS Dictionary Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tts_plan/">TTS Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tts_seq/">TTS Seq</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tts_starter_template/">TTS Starter Tempalte</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tts_spice/">TTS Spice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tts_utilities/">TTS Utilities</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Collaboration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/collaboration/">Start here</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/fudamental_concepts/">Fundamental Concepts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/install/">Initial installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/cookbooks/">Cookbooks and Demos</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/style_primer/">Style Primer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/styles_et_al/">Styles, Norms, and Best Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/documentation/">Documentation Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/verification_and_validation/">Verification and Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/testing/">Testing Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/releases/">Releases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/roadmap/">Roadmap</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/governance/">Governance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/licence/">Licensing</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference Project</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/demosat_description/">DemoSat Reference Project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/demosat_libraries/">DemoSat Adaptation Libraries</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/fprime/">DemoSat F-Prime Build</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Teamtools Studio Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Repositories</li>
+      <li class="breadcrumb-item active">TOWER</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="tower">Tower</h1>
+<p><img alt="Project logo" src="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/raw/main/docs/images/tts_image_artifacts/tower.png" /></p>
+<h3 id="overview">Overview</h3>
+<p>Tower is a Python infrastructure for implementing automated Rule-based checks from varied input sources in an ops-like environment. It was originally written for M20 and MSL operations, and has since been taken to Europa Clipper and OCO-2. Although it was originally written in the context of Flight Rule checking, it could be generalized to any rule checking, especially if there is a clear dictionary of rules that need to be checked. Rules can be checked directly in Tower, or it can be used to consume the output of upstream tools like SeqGen, FRESH, or SSIM. In the case where these tools are Pyhton-based, they can be called as libraries at runtime within Tower. This allows the Tower developer to combine outputs of upstream tools in arbitrary ways in order to best check the spirit of what they are intended to check, and removes the tedious task of manually comparing outputs of tools with disparate reporting styles.</p>
+<p>Although it may feel like Tower can or should also be used for downlink assessment, that is not what it is meant for. For the very similar function of autodispositioning in downlink analysis, see Dexter.</p>
+<h3 id="inputs-checks-dispositions-and-reports">Inputs, Checks, Dispositions, and Reports.</h3>
+<p>Tower's basic construction is in 3 layers.</p>
+<h4 id="input-layer">Input Layer:</h4>
+<p>The input layer is a series of Python classes (called Input Clients), each representing some input into planning. Input Clients are essentially data containers holding the information against which we will do our tests. They are implemented via Abstract Base Classes and provide patterns for the developer to follow that will enable a clear and concise interface to the Checker and Reporting layers while still providing powerful customizability. Inputs into the input layer may be the outputs of upstream tools (Sequences, JSON, CSV, etc), Rule Dictionaries, or basic statistics about the plan (predicted uplink time, sol number, venue, etc). For more complex data, Input Clients can also take other Input Clients as their inputs.</p>
+<h4 id="checker-layer">Checker Layer:</h4>
+<p>The checker layer is where rules are checked. Each checker can take any number of input clients as inputs. As the checker inspects its clients, it adds <em>dispositions</em> to rule results. Dispositions are the result of an atomic check, and can be PASSED, FLAGGED, VIOLATED, or INFO_ONLY.</p>
+<h4 id="rule-result-layer-and-dispostions">Rule Result Layer (and dispostions):</h4>
+<p>The RuleResults class is meant to marry the dispositions defined in the Checker layer with the rule dictionary items they represent. Each RuleResult object as an associated status, which is the roll up of the statuses of its dispositions. (e.g. if a rule has 3 dispoisitions of PASSED, PASSED, and FLAGGED status, then the rule will have a FLAGGED status)</p>
+<h3 id="elegant-error-handling">Elegant Error Handling</h3>
+<p>Failsafety is one of Tower's most important design principles. It was developed with teamtools developers in mind, who often need to write critical code, but for the various reasons that teamtools exist, are often not the best coders at JPL.</p>
+<p>Tower's answer to this is to wrap all Input Clients and Checkers into Input Management and Checker Management layers respectively. Each input and each checker runs in isolation wrapped in a try/except block. If any client or checker fails to run correctly, it is replaced with a dummy object that will allow downstream tools expecting to consume its output to still run to completion. If any part of a check fails, Tower will <em>still report the results of the part that didn't</em> while highlighting the check as needing human intervention. This will mean debugging the failure, or if the operator is not comfortable traversing Tower code, understanding what needs to be done in order to complete the check manually. Tower's use of native rule dictionaries also enforces that the final reports will never hide a rule from the operator just because its implementation failed.</p>
+<p>This allows spacecraft planning to proceed, even if there is a bug in the code and no developer is available to fix it. It may mean more manual work on the part of the operator, but Tower is explicitly designed to minimize the work needed to plan given the limitations of any particular rule check, even a complete failure.</p>
+<h3 id="unit-testing-framework">Unit Testing Framework</h3>
+<p>Tower and its mission-specific implementations also create strong patterns for how to generate unit tests to ensure that all check code is healthy under known conditions. This is also pivotal to the distributed nature of the tool and its management under the Teamtools Studio. The basic pattern is that every input client and every checker should have at least one test. Input client tests should protect against all known ways an input could be malformed, and checker tests should check at least one exemplar of a test passing and failing in its unit tests.</p>
+<h3 id="reporting">Reporting</h3>
+<p>Another powerful feature of Tower is its reporting interface. The primary reporting interface features a list of all rules in the dicitonary (whether they were checked or not). Results are presented so the most severe violations bubble to the top, and filtering and sorting of the main table is provided out of the box, and each row is clickable to show extended metadata from the rule defintion (customizable on a per-mission implementation) and the results of each discrete disposition that was added to the RuleResult object</p>
+<p>When defining a checker code, it is also possible to attach arbitrary HTML code to a rule as a besopoke report. Those show up in the top ribbon of the Tower output and also in line with their rules in the main table. Multiple RuleResult objects can contribute to each report, and contributing rule resultes are rolled up at the top of each.</p>
+<h3 id="projects-currently-supported">Projects Currently Supported</h3>
+<ul>
+<li>Eurpa Clipper</li>
+<li>Mars 2020/Perseverance</li>
+<li>Mars Science Laboratory/Curiosity</li>
+<li>Orbiting Carbon Observatory 2 (OCO-2)</li>
+</ul>
+<h2 id="architecture">Architecture</h2>
+<h3 id="tts-dependencies">TTS dependencies</h3>
+<ul>
+<li>TTS Utilities</li>
+<li>HTML Utilities</li>
+</ul>
+<hr />
+<p><strong>Repository Links:</strong> <a href="https://nasa-jpl-teamtools-studio.github.io/Tower/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/Tower/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/Tower" target="_blank" rel="noopener noreferrer">Source</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../tts_papertrail/" class="btn btn-neutral float-left" title="Papertrail"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tts_dictionary_interface/" class="btn btn-neutral float-right" title="TTS Dictionary Interface">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../tts_papertrail/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../tts_dictionary_interface/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

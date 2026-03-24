@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/philosophy/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Design Philosophy - Teamtools Studio Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Design Philosophy";
+        var mkdocs_page_input_path = "philosophy.md";
+        var mkdocs_page_url = "/studio/teamtools-documentation/philosophy/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Teamtools Studio Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../architecture/">Project Architecture</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Design Philosophy</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#dont-build-tools-build-bricks">Don’t build tools. Build bricks</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#purely-python-when-practical">Purely Python when Practical</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#projects-manage-their-own-risk">Projects manage their own risk</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#accessible-anywhere">Accessible anywhere</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#support-the-little-guys-too">Support the little guys, too</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#make-them-know-who-you-are">Make them know who you are</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Repositories</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_dante/">Dante</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_data_utils/">Data Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_dexter/">Dexter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_dtat/">DTAT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_fresh/">FRESH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_html_utils/">HTML Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_papertrail/">Papertrail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_tower/">TOWER</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_dictionary_interface/">TTS Dictionary Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_plan/">TTS Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_seq/">TTS Seq</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_starter_template/">TTS Starter Tempalte</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_spice/">TTS Spice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../repositories/tts_utilities/">TTS Utilities</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Collaboration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/collaboration/">Start here</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/fudamental_concepts/">Fundamental Concepts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/install/">Initial installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/cookbooks/">Cookbooks and Demos</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/style_primer/">Style Primer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/styles_et_al/">Styles, Norms, and Best Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/documentation/">Documentation Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/verification_and_validation/">Verification and Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/testing/">Testing Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/releases/">Releases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../training/">Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/roadmap/">Roadmap</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/governance/">Governance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/licence/">Licensing</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference Project</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference_project/demosat_description/">DemoSat Reference Project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference_project/demosat_libraries/">DemoSat Adaptation Libraries</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference_project/fprime/">DemoSat F-Prime Build</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Teamtools Studio Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Design Philosophy</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="design-philosophy">Design Philosophy</h1>
+<p>In order to have as coherent a product as possible, the Teamtools Studio has made several high-level design philosophies that give this suite the character that it has. If you want to know what we feel we take ownership of and what you would have ownership of should you choose to extend our work, this is a good place to start. More specific choices are noted elsewhere in the COLLABORATION section below. This section is meant to be more of a narrative of why we do things the way we do them, and less exactly what we do or how we do it.</p>
+<h2 id="dont-build-tools-build-bricks">Don’t build tools. Build bricks</h2>
+<blockquote>
+<p><strong>Rationale</strong> The more specific the solution, the less likely it will be useful to other projects. We will never be as imaginative as the community as a whole. We are here to enable complete solutions, not to deliver them.</p>
+<p><strong>Design Influence</strong> Split out libraries to be as atomic as feasible. Missions get to take everything they want and don’t have to leave things behind because they’re attached to things they don’t want.</p>
+</blockquote>
+<h2 id="purely-python-when-practical">Purely Python when Practical</h2>
+<blockquote>
+<p><strong>Rationale</strong> Limit technical diversity to maximize pool of studio developers and customer base. Python is the most popular language among operators and likely will be for some time.</p>
+<p><strong>Design Influence</strong> Some tools have other components under the hood (JavaScript in html_utils). But end users should see only Python wherever possible.</p>
+</blockquote>
+<h2 id="projects-manage-their-own-risk">Projects manage their own risk</h2>
+<blockquote>
+<p><strong>Rationale</strong> No one will want to use this stuff if they feel like we’re tying their hands. People closest to the risk should always make the assessment of it. That is not TTS even though individual TTS developers may be on a project where they assess risk.</p>
+<p><strong>Design Influence</strong> Drives architecture choices, drives use of Python for its very strong extensibility via Abstract Base Classes and similar. Drive ssupport of older Python versions.</p>
+</blockquote>
+<h2 id="accessible-anywhere">Accessible anywhere</h2>
+<blockquote>
+<p><strong>Rationale</strong> Tools that are available as CLI should be written such that their functionality is as easily accessed via library.</p>
+<p><strong>Design Influence</strong> Avoids users writing bad command line parsers, maintains pythonic data structures throughout and avoids loss of data. Allows tools ostensibly built for the command line to be leveraged in larger libraries or web apps.</p>
+</blockquote>
+<h2 id="support-the-little-guys-too">Support the little guys, too</h2>
+<blockquote>
+<p><strong>Rationale</strong> Small missions have long been a place where young and inexperienced engineers flounder without much help. At the same time, they usually have much more flexible risk postures than flagships, meaning that a talented mid-career or senior engineer could make progress with less red tape while also being present to mentor more junior colleagues.</p>
+<p><strong>Design Influence</strong> Support older Python versions, keep tools portable enough not to require cloud resources. Allow very simple deployment with just Python venvs</p>
+</blockquote>
+<h2 id="make-them-know-who-you-are">Make them know who you are</h2>
+<blockquote>
+<p><strong>Rationale</strong> There’s a lot here, and it would be easy for people using TTS tools in disparate places to not know it</p>
+<p><strong>Design Influence</strong> Drives branding in reporting, logos, library naming (e.g. tts-library-name), dedicated GitHub Organization</p>
+</blockquote>
+<hr />
+<p><a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools-documentation/blob/main/docs/philosophy.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../architecture/" class="btn btn-neutral float-left" title="Project Architecture"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../repositories/tts_dante/" class="btn btn-neutral float-right" title="Dante">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../architecture/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../repositories/tts_dante/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/testing/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Testing Practices - Teamtools Studio Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Testing Practices";
+        var mkdocs_page_input_path = "collaboration/testing.md";
+        var mkdocs_page_url = "/studio/teamtools-documentation/collaboration/testing/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Teamtools Studio Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../architecture/">Project Architecture</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../philosophy/">Design Philosophy</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Repositories</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dante/">Dante</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_data_utils/">Data Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dexter/">Dexter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dtat/">DTAT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_fresh/">FRESH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_html_utils/">HTML Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_papertrail/">Papertrail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_tower/">TOWER</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dictionary_interface/">TTS Dictionary Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_plan/">TTS Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_seq/">TTS Seq</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_starter_template/">TTS Starter Tempalte</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_spice/">TTS Spice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_utilities/">TTS Utilities</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Collaboration</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/">Start here</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fudamental_concepts/">Fundamental Concepts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install/">Initial installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cookbooks/">Cookbooks and Demos</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../style_primer/">Style Primer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../styles_et_al/">Styles, Norms, and Best Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../verification_and_validation/">Verification and Validation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Testing Practices</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#tts-testing-conventions">TTS Testing Conventions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#test-matrix">Test Matrix</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../roadmap/">Roadmap</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../governance/">Governance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../licence/">Licensing</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference Project</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/demosat_description/">DemoSat Reference Project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/demosat_libraries/">DemoSat Adaptation Libraries</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/fprime/">DemoSat F-Prime Build</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Teamtools Studio Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Collaboration</li>
+      <li class="breadcrumb-item active">Testing Practices</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="testing">Testing</h1>
+<p>Unit testing is one of the single most important ingredients in writing maintainable code.
+Once you trust your tests, you will be set free to pull things apart, put them back together
+again, and have confidence that you have minimized the risk of breaking your downstream 
+customers with your next update.</p>
+<p>For this reason, TTS strives to have 100% coverage on all of our libraries, and has included
+test coverage reports in our unit test matrix (see https://github.com/NASA-JPL-Teamtools-Studio/tts_ci_cd/)</p>
+<h2 id="tts-testing-conventions">TTS Testing Conventions</h2>
+<ul>
+<li>Use pytest. The world won't end if you're contributing something using unittest, but 
+in general, that is our style.</li>
+<li>Unless there is a compelling reason not to, try to match your test architecture one-to-one with
+the architecture with your code architecture.<ul>
+<li>One test file per code file</li>
+<li>One test per function/method</li>
+<li>When using supporting files, structure your test file directory so it is 
+very easy to track which file belongs to which test</li>
+<li>When using supportnig files, only share files between tests if they are extremely similar</li>
+</ul>
+</li>
+<li>Tests written by GenAI are better than no tests at all.<ul>
+<li>GenAI is a powerful tool in writing tests, but shoulnd't be used naively</li>
+<li>If you write a test with GenAI, you should mark it as unreviewed until you have clearly
+walked through and understand it (https://github.com/NASA-JPL-Teamtools-Studio/tts_ci_cd/issues/1)<ul>
+<li>Note: we have not followed this convention to date, but will soon start. </li>
+<li>To begin, all tests should be marked as unreviewed even though many were written by
+humans</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Know how code coverage actually works<ul>
+<li>pytest-cov gives you credit for exerising a line of code</li>
+<li>It has no way to understand that you have written a valid test</li>
+<li>You could exercise every line and just assert True at the end and get 100% coverage</li>
+<li>See https://github.com/NASA-JPL-Teamtools-Studio/tts_ci_cd/issues/2 for more information</li>
+</ul>
+</li>
+</ul>
+<h2 id="test-matrix">Test Matrix</h2>
+<p>Although it is impossible to test in every permutation of Python version and dependency version
+that out customers may be using, TTS understands that teams using our code may be using different
+configurations than we are. "It works on my machine" is not sufficient.</p>
+<p>For this reason, we have developed a matrix testing strategy as follows:
+* Run tests against every major version of Python. 
+    * In general this is the most recent minor version of each major version
+    * The exception is 3.6.8, which we use as our oldest supported version
+    * 3.6.8 still comes as default on many systems
+* Allow pip to resolve whichever lastest version of each library is available for each test
+* Use a clean Docker container for testing each library. Clone it and install all of its dependencies
+at run time.
+    * These libraries are best used as a whole suite, but are designed to be used independently
+    of each other, so we smoke out any implicit dependencies here so we can fix them
+* Use unit testing as a time to run other housekeeping tools
+    * Security flaws via pip-audit and bandit
+    * Test coverage via pytest-cov
+    * Documentation coverage via a home-grown script
+        * Check if every function, method, class, and arg/kwarg has a docstring</p>
+<p>See https://https://nasa-jpl-teamtools-studio.github.io/tts_ci_cd/ for latest matrix test results</p>
+<hr />
+<p><a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools-documentation/blob/main/docs/collaboration/testing.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../verification_and_validation/" class="btn btn-neutral float-left" title="Verification and Validation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../releases/" class="btn btn-neutral float-right" title="Releases">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../verification_and_validation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../releases/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
