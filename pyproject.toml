@@ -1,0 +1,43 @@
+[project]
+name = "tts-docs"
+description = "Markdown docks and helper scripts for Teatmools Studio documentation deployment."
+readme = "README.md"
+requires-python = ">=3.6"
+license = {text = "Unlicense"}
+authors = [
+  { name = "muszynsk", email = "matt.muszynski@jpl.nasa.gov" },
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: Unlicense",
+]
+dependencies = [
+  'mkdocs',
+  'mkdocs-mermaid2-plugin',
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation"
+
+[project.scripts]
+fresh = "tts_docs.readme_collector:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "no-local-version"
+
+[tool.setuptools.package-data]
+"*" = ["*.csv", "*.json"]
+
+[build-system]
+requires = [
+  "setuptools", 
+  "wheel", 
+  "toml", 
+  "setuptools-scm"
+  ]
+build-backend = "setuptools.build_meta"
