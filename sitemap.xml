@@ -1,143 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/about/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/about/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/architecture/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/architecture/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/philosophy/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/philosophy/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/training/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/training/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/collaboration/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/collaboration/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/cookbooks/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/cookbooks/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/documentation/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/documentation/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/fudamental_concepts/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/fudamental_concepts/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/governance/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/governance/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/install/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/install/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/licence/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/licence/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/releases/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/releases/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/roadmap/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/roadmap/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/style_primer/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/style_primer/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/styles_et_al/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/styles_et_al/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/testing/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/testing/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/collaboration/verification_and_validation/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/verification_and_validation/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/reference_project/demosat_description/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/reference_project/demosat_description/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/reference_project/demosat_libraries/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/reference_project/demosat_libraries/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/reference_project/fprime/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/reference_project/fprime/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_dante/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_dante/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_data_utils/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_data_utils/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_dexter/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_dexter/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_dictionary_interface/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_dictionary_interface/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_dtat/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_dtat/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_fresh/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_fresh/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_html_utils/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_html_utils/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_papertrail/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_papertrail/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_plan/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_plan/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_seq/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_seq/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_spice/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_spice/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_starter_template/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_starter_template/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_tower/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_tower/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
     <url>
-         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/repositories/tts_utilities/</loc>
+         <loc>https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/repositories/tts_utilities/</loc>
          <lastmod>2026-03-24</lastmod>
     </url>
 </urlset>
