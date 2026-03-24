@@ -2,50 +2,64 @@ name: Daily Link Health Check
 
 on:
   schedule:
-    # Runs at 00:00 UTC (4:00 PM PT) every day
     - cron: '0 0 * * *'
-  workflow_dispatch: # Allows you to trigger it manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   crawl:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write # Required to create the issue automatically
+    # Note: We don't need 'permissions:' here because the App Token 
+    # carries its own permissions defined in the App settings.
     
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Generate Token from GitHub App
+        id: generate_token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.14'
+          python-version: '3.10'
 
       - name: Install LinkChecker
         run: pip install linkchecker
 
       - name: Run Link Scan
-        # Replace the URL below with your actual site
-        # --no-status: cleaner logs
-        # --check-extern: verifies external links don't lead to 404s
-        # --timeout=30: prevents hanging on slow servers
         run: |
-          linkchecker https://nasa-jpl-teamtools-studio.github.io/ --no-status --check-extern --timeout=30
+          linkchecker https://yourwebsite.com --no-status --check-extern > full_report.txt || echo "Links broken"
 
-      - name: Create GitHub Issue on Failure
-        if: failure()
-        uses: imjohnbo/ok-to-test@v2 # Lightweight action to interact with GitHub API
+      - name: Filter Broken Links
+        if: always()
+        run: |
+          grep -E "404|Error|Connection" full_report.txt > broken_links.txt || echo "Clean"
+
+      - name: Upload Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          # This creates an issue in your repo to alert you
-          title: "⚠️ Broken Links Detected: $(date +'%Y-%m-%d')"
-          body: |
-            ## Automated Link Check Failed
-            The daily crawler found broken links (404s) on your site.
-            
-            **Action Required:**
-            1. View the [Full Logs here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-            2. Fix the identified broken URLs.
-            
-            _This issue was generated automatically by the Daily Link Health Check workflow._
-          # Replace 'your-github-username' with your actual handle to get the notification
-          assignees: mrmuszynski
+          name: broken-links-report
+          path: broken_links.txt
+
+      - name: Create Issue via App
+        env:
+          # We use the token from the App, not the GITHUB_TOKEN
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          if [ -s broken_links.txt ]; then
+            gh issue create \
+              --title "⚠️ Broken Links Detected: $(date +'%Y-%m-%d')" \
+              --assignee "@me" \
+              --body "## Daily Health Check Failed
+              The link crawler found broken links. 
+              
+              **How to view:**
+              1. Download the 'broken-links-report' from the Artifacts section of this run.
+              2. See the [Full Run Details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+            exit 1
+          fi
