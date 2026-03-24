@@ -1,5 +1,5 @@
 site_name: Teamtools Studio Documentation
-site_url: https://github.jpl.nasa.gov/pages/teamtools-studio/teamtools-documentation/
+site_url: https://nasa-jpl-teamtools-studio.github.io/studio/teamtools-documentation/
 nav:
   - Home: index.md
   - About: about.md
