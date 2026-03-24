@@ -60,7 +60,7 @@ def generate_repo_links(ssh_url):
     Converts git@github... SSH URL to browser-friendly URLs.
     """
     # 1. Convert 'git@' to 'https://' and remove '.git'
-    base_url = ssh_url.replace("git@", "https://").replace(".git", "")
+    base_url = ssh_url.replace("git@", "").replace(".git", "")
     
     # 2. Fix the colon (github.com:org -> github.com/org)
     if "github.com:" in base_url:
@@ -74,7 +74,7 @@ def generate_repo_links(ssh_url):
     # Ensure trailing slash to prevent GHE directory redirect loops/404s
     if not pages_url.endswith('/'):
         pages_url += '/'
-    
+
     return {
         "root": base_url,
         "issues": f"{base_url}/issues",

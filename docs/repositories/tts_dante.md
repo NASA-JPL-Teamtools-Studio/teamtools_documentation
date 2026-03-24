@@ -41,4 +41,4 @@ Reasons you'd want to use AMPCS instead:
 * TTS Data Utils
 
 ---
-**Repository Links:** <a href="https://nasa-jpl-teamtools-studio.github.io/Dante/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_dante/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="https://https://github.com/NASA-JPL-Teamtools-Studio/tts_dante" target="_blank" rel="noopener noreferrer">Source</a>
+**Repository Links:** <a href="nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_dante/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_dante/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_dante" target="_blank" rel="noopener noreferrer">Source</a>

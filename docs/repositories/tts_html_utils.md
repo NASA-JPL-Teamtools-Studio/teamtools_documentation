@@ -1,6 +1,6 @@
 # HTML Utilities
 
-![Project logo](https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/raw/main/docs/images/tts_image_artifacts/html_utils.png)
+![Project logo](https://github.com/NASA-JPL-Teamtools-Studio/teamtools-documentation/raw/main/docs/images/tts_image_artifacts/html_utils.png)
 
 ### Overview
 
@@ -36,4 +36,4 @@ that can be easily shared via email or attaching to other reporting and project 
 * TTS Utilities
 
 ---
-**Repository Links:** <a href="https://nasa-jpl-teamtools-studio.github.io/tts_html_utils/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/html_utils/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/html_utils" target="_blank" rel="noopener noreferrer">Source</a>
+**Repository Links:** <a href="nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_html_utils/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_html_utils/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_html_utils" target="_blank" rel="noopener noreferrer">Source</a>

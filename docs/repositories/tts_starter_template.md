@@ -23,4 +23,4 @@ when creating a new repository normally.
 * TTS Utilities
 
 ---
-**Repository Links:** <a href="https://nasa-jpl-teamtools-studio.github.io/tts_starter_template/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_starter_template/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_starter_template" target="_blank" rel="noopener noreferrer">Source</a>
+**Repository Links:** <a href="nasa-jpl-teamtools-studio.github.io/NASA-JPL-Teamtools-Studio/tts_starter_template/" target="_blank" rel="noopener noreferrer">Docs</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_starter_template/issues" target="_blank" rel="noopener noreferrer">Issues</a> | <a href="github.com/NASA-JPL-Teamtools-Studio/tts_starter_template" target="_blank" rel="noopener noreferrer">Source</a>
