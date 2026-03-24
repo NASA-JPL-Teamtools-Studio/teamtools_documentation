@@ -4,14 +4,23 @@ on:
   issues:
     types: [opened]
   workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number to triage (manual test)'
+        required: false
 
 jobs:
   assign-triage:
     runs-on: ubuntu-latest
-    # Only run for the Studio Org
+    # Guardrail: Only run if we are in the Studio Org
     if: github.repository_owner == 'NASA-JPL-Teamtools-Studio'
 
     steps:
+      # 1. Essential: Setup the local environment so 'gh' knows the context
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. Authenticate as the dedicated Triage Bot App
       - name: Generate Triage Token
         id: generate_token
         uses: actions/create-github-app-token@v3
@@ -19,18 +28,25 @@ jobs:
           app-id: ${{ secrets.TTS_TRIAGE_BOT_ID }}
           private-key: ${{ secrets.TTS_TRIAGE_BOT_PRIVATE_KEY }}
 
+      # 3. Perform Ground System Triage
       - name: Assign Triage Team & Metadata
         env:
           GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+          # Handle both automated triggers and manual dispatch inputs
+          ISSUE_NUM: ${{ github.event.issue.number || github.event.inputs.issue_number }}
         run: |
+          if [ -z "$ISSUE_NUM" ]; then
+            echo "Error: No issue number found. This workflow requires an issue context."
+            exit 1
+          fi
+
           # 1. Add the Triage Team as the 'Functional' Assignee
-          # Since your testing shows this works, we use the direct slug:
-          gh issue edit ${{ github.event.issue.number }} \
+          gh issue edit "$ISSUE_NUM" \
             --add-assignee "NASA-JPL-Teamtools-Studio/triage" \
             --add-label "triage"
 
           # 2. Post the GSE Checklist
-          gh issue comment ${{ github.event.issue.number }} --body "
+          gh issue comment "$ISSUE_NUM" --body "
           ### 🛠️ Triage Bot: Automated Ingestion
           The **Triage Team** has been assigned as the functional lead for this issue.
           
