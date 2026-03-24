@@ -12,15 +12,12 @@ on:
 jobs:
   assign-triage:
     runs-on: ubuntu-latest
-    # Guardrail: Only run if we are in the Studio Org
     if: github.repository_owner == 'NASA-JPL-Teamtools-Studio'
 
     steps:
-      # 1. Essential: Setup the local environment so 'gh' knows the context
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 2. Authenticate as the dedicated Triage Bot App
       - name: Generate Triage Token
         id: generate_token
         uses: actions/create-github-app-token@v3
@@ -28,29 +25,28 @@ jobs:
           app-id: ${{ secrets.TTS_TRIAGE_BOT_ID }}
           private-key: ${{ secrets.TTS_TRIAGE_BOT_PRIVATE_KEY }}
 
-      # 3. Perform Ground System Triage
-      - name: Assign Triage Team & Metadata
+      - name: Notify Triage Team & Label
         env:
           GH_TOKEN: ${{ steps.generate_token.outputs.token }}
-          # Handle both automated triggers and manual dispatch inputs
           ISSUE_NUM: ${{ github.event.issue.number || github.event.inputs.issue_number }}
         run: |
           if [ -z "$ISSUE_NUM" ]; then
-            echo "Error: No issue number found. This workflow requires an issue context."
+            echo "Error: No issue number found."
             exit 1
           fi
 
-          # 1. Add the Triage Team as the 'Functional' Assignee
-          gh issue edit "$ISSUE_NUM" \
-            --add-assignee "NASA-JPL-Teamtools-Studio/triage" \
-            --add-label "triage"
+          # 1. Add the triage label so it appears in the team's queue
+          gh issue edit "$ISSUE_NUM" --add-label "triage"
 
-          # 2. Post the GSE Checklist
+          # 2. Post the GSE Checklist and @mention the team
+          # This triggers the notification for everyone in the Triage 'seat'
           gh issue comment "$ISSUE_NUM" --body "
-          ### 🛠️ Triage Bot: Automated Ingestion
-          The **Triage Team** has been assigned as the functional lead for this issue.
+          ### 🚨 Ground System Alert: Triage Required
+          **Attention:** @NASA-JPL-Teamtools-Studio/triage
           
-          **Ground System Checklist:**
+          The **Triage Team** has been notified of this new issue.
+          
+          **GSE Checklist:**
           - [ ] Review 404 report (if applicable).
           - [ ] Verify metadata and priority labels.
           - [ ] Reassign to a specific subsystem lead if necessary.
