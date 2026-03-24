@@ -3,6 +3,7 @@ name: Auto Assign Triage Team
 on:
   issues:
     types: [opened]
+  workflow_dispatch:
 
 jobs:
   assign-triage:
