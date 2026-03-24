@@ -50,6 +50,6 @@ jobs:
           - [ ] Assess whether ticket belongs in this repo
           - [ ] Assign criticality
           - [ ] Assign developer 
-          = [ ] Remove triage label
+          - [ ] Remove triage label
           
           *This issue was processed by the TTS Triage Bot.*"
