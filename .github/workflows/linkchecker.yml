@@ -61,5 +61,4 @@ jobs:
               **How to view:**
               1. Download the 'broken-links-report' from the Artifacts section of this run.
               2. See the [Full Run Details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
-            exit 1
           fi

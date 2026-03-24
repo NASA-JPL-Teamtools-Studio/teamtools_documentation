@@ -1,0 +1,41 @@
+name: Auto Assign Triage Team
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  assign-triage:
+    runs-on: ubuntu-latest
+    # Only run for the Studio Org
+    if: github.repository_owner == 'NASA-JPL-Teamtools-Studio'
+
+    steps:
+      - name: Generate Triage Token
+        id: generate_token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.TTS_TRIAGE_BOT_ID }}
+          private-key: ${{ secrets.TTS_TRIAGE_BOT_PRIVATE_KEY }}
+
+      - name: Assign Triage Team & Metadata
+        env:
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          # 1. Add the Triage Team as the 'Functional' Assignee
+          # Since your testing shows this works, we use the direct slug:
+          gh issue edit ${{ github.event.issue.number }} \
+            --add-assignee "NASA-JPL-Teamtools-Studio/triage" \
+            --add-label "triage"
+
+          # 2. Post the GSE Checklist
+          gh issue comment ${{ github.event.issue.number }} --body "
+          ### 🛠️ Triage Bot: Automated Ingestion
+          The **Triage Team** has been assigned as the functional lead for this issue.
+          
+          **Ground System Checklist:**
+          - [ ] Review 404 report (if applicable).
+          - [ ] Verify metadata and priority labels.
+          - [ ] Reassign to a specific subsystem lead if necessary.
+          
+          *This issue was processed by the Studio Triage App.*"
