@@ -1,0 +1,51 @@
+name: Daily Link Health Check
+
+on:
+  schedule:
+    # Runs at 00:00 UTC (4:00 PM PT) every day
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allows you to trigger it manually from the Actions tab
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write # Required to create the issue automatically
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.14'
+
+      - name: Install LinkChecker
+        run: pip install linkchecker
+
+      - name: Run Link Scan
+        # Replace the URL below with your actual site
+        # --no-status: cleaner logs
+        # --check-extern: verifies external links don't lead to 404s
+        # --timeout=30: prevents hanging on slow servers
+        run: |
+          linkchecker https://nasa-jpl-teamtools-studio.github.io/ --no-status --check-extern --timeout=30
+
+      - name: Create GitHub Issue on Failure
+        if: failure()
+        uses: imjohnbo/ok-to-test@v2 # Lightweight action to interact with GitHub API
+        with:
+          # This creates an issue in your repo to alert you
+          title: "⚠️ Broken Links Detected: $(date +'%Y-%m-%d')"
+          body: |
+            ## Automated Link Check Failed
+            The daily crawler found broken links (404s) on your site.
+            
+            **Action Required:**
+            1. View the [Full Logs here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            2. Fix the identified broken URLs.
+            
+            _This issue was generated automatically by the Daily Link Health Check workflow._
+          # Replace 'your-github-username' with your actual handle to get the notification
+          assignees: mrmuszynski
