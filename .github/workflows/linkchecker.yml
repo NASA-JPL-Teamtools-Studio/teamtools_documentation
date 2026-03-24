@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Link Scan
         run: |
-          linkchecker https://yourwebsite.com --no-status --check-extern > full_report.txt || echo "Links broken"
+          linkchecker https://nasa-jpl-teamtools-studio.github.io/teamtools_documentation/ --no-status --check-extern > full_report.txt || echo "Links broken"
 
       - name: Filter Broken Links
         if: always()
@@ -54,7 +54,7 @@ jobs:
           if [ -s broken_links.txt ]; then
             gh issue create \
               --title "⚠️ Broken Links Detected: $(date +'%Y-%m-%d')" \
-              --assignee "@me" \
+              --assignee "mrmuszynski" \
               --body "## Daily Health Check Failed
               The link crawler found broken links. 
               
