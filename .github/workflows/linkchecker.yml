@@ -1,16 +1,16 @@
-name: Daily Link Health Check
+name: Check broken links after mk-docs deploy
 
 on:
-  schedule:
-    - cron: '0 0 * * *'
+  workflow_run:
+      workflows: ["Publish docs to gh-pages"]
+      types:
+        - completed
   workflow_dispatch:
 
 jobs:
   crawl:
     runs-on: ubuntu-latest
-    # Note: We don't need 'permissions:' here because the App Token 
-    # carries its own permissions defined in the App settings.
-    
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
