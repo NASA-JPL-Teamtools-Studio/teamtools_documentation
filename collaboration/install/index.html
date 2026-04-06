@@ -150,8 +150,11 @@
               
                 <h1 id="installation">Installation</h1>
 <p>While you are free to install these libraries wherever you want, we find that it is best practice to have a virtual environment scoped to just this work and work that is closely related. That will minimize the number of conflicts you see between TTS libraries and libraries installed in the same environment for other purposes. </p>
+<p>The first thing you will want to do is to make and cd into a new workdir.</p>
+<p><code>mkdir /path/to/your/workdir</code>
+<code>cd /path/to/your/workdir</code></p>
 <p>If you work with TTS on multiple projects, it may even be prudent to have a different setup per project. This is especially true if your different projects use different versions of Python.</p>
-<p>To initalize a virtual environment:</p>
+<p>To initalize a virtual environment (probably best to do it in the workdir you just made, but not a hard requirement):</p>
 <p><code>python -m venv /path/to/your/venv</code></p>
 <p>We recommend that you give your virtual environment a descriptive name beyond just <code>venv</code>. And if you need to have multiple, it is useful to keep them in the same directory For example:</p>
 <p><code>python -m venv virtual_environments/demosat_tower_development</code>.</p>
