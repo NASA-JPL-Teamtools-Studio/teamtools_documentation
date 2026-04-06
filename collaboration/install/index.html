@@ -160,9 +160,9 @@
 <p>The library tts_ci_cd offers tools that will help you set up quickly. Begin by installing it in your virtual environment. </p>
 <p><code>pip install tts-ci-cd</code></p>
 <p>It can also be cloned and installed editbaly</p>
-<p><code>git clone git@github.com:NASA-JPL-Teamtools-Studio/tts_ci_cd.git</code>
-<code>pip install -e tts_ci_cd</code></p>
-<p>When installing tts-ci-cd, pip will install several command line tools. In order to have access to their aliases, you should deactivate and reactivate your venv.</p>
+<p><code>git clone git@github.com:NASA-JPL-Teamtools-Studio/tts_ci_cd.git</code></p>
+<p><code>pip install -e tts_ci_cd</code></p>
+<p>When installing tts-ci-cd locally, pip will install several command line tools. In order to have access to their aliases, reactivate your venv. You do not need to do so if installing from pypi.</p>
 <p>The fastest way to get up and running is to run the following command after reactivating:</p>
 <p><code>tts-demosat-dev-setup --targets demosat_tower --run-tests</code></p>
 <p>This will clone and install demosat_tower editable along with all of its TTS dependencies and run all of thier unit tests.</p>
@@ -177,6 +177,8 @@ way and you will have a build in cadre of developers who already know the look a
 <p>We recommend that your project has a github organization called <code>[projectname]-core-teamtools</code> (e.g. <code>nisar-core-teamtools</code> that has only these repositories in it. Each
 repository should be named as described above: <code>[your_mission]\_[lib_to_adapt]</code> (e.g. <code>nisar_seq</code>). This will keep it clear which core libraries are
 related to your adaptation libraries.</p>
+<h1 id="converting-demosat-to-your-project">Converting DemoSat to Your Project</h1>
+<p>Once you've cloned all of the libraries that you need to run the DemoSat adaptation you may want to simply migrate the Demosat library/libraries into instances from your project. To do so, simply change all of the DemoSat references to your project identifiers (e.g. for Europa Clipper Tower, use something like eurc_tower and eurc-tower). Create a new repo in github for your new library with the same name as the root directory of any library that you just renamed and run <code>git remote set-url origin &lt;NEW_GIT_URL_HERE&gt;</code> in its root. Now when you <code>git push</code>, the code will be sent to your new repository on github instead of to the DemoSat repo.</p>
 <hr />
 <p><a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/collaboration/install.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a></p>
               
