@@ -2,9 +2,14 @@
 
 While you are free to install these libraries wherever you want, we find that it is best practice to have a virtual environment scoped to just this work and work that is closely related. That will minimize the number of conflicts you see between TTS libraries and libraries installed in the same environment for other purposes. 
 
+The first thing you will want to do is to make and cd into a new workdir.
+
+`mkdir /path/to/your/workdir`
+`cd /path/to/your/workdir`
+
 If you work with TTS on multiple projects, it may even be prudent to have a different setup per project. This is especially true if your different projects use different versions of Python.
 
-To initalize a virtual environment:
+To initalize a virtual environment (probably best to do it in the workdir you just made, but not a hard requirement):
 
 `python -m venv /path/to/your/venv`
 
