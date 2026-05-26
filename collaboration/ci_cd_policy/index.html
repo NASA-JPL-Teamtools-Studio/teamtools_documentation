@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/style_primer/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/ci_cd_policy/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Style Primer - Teamtools Studio Documentation</title>
+    <title>CI/CD Policies - Teamtools Studio Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Style Primer";
-        var mkdocs_page_input_path = "collaboration/style_primer.md";
-        var mkdocs_page_url = "/studio/teamtools_documentation/collaboration/style_primer/";
+        var mkdocs_page_name = "CI/CD Policies";
+        var mkdocs_page_input_path = "collaboration/ci_cd_policy.md";
+        var mkdocs_page_url = "/studio/teamtools_documentation/collaboration/ci_cd_policy/";
       </script>
     
     <!--[if lt IE 9]>
@@ -92,9 +92,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../cookbooks/">Cookbooks and Demos</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Style Primer</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../style_primer/">Style Primer</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../styles_et_al/">Styles, Norms, and Best Practices</a>
                   </li>
@@ -104,7 +102,31 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing Practices</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ci_cd_policy/">CI/CD Policies</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">CI/CD Policies</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#releases">Releases</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#unit-testing">Unit Testing</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#tests">Tests</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#test-coverage">Test Coverage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tests-written-by-ai">Tests Written by AI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#security-screening">Security Screening</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pip-audit">Pip Audit</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bandit">Bandit</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
                   </li>
@@ -141,7 +163,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Collaboration</li>
-      <li class="breadcrumb-item active">Style Primer</li>
+      <li class="breadcrumb-item active">CI/CD Policies</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -150,16 +172,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="code-style-primer">Code Style Primer</h1>
-<p>For the new kids on the block... here are the basics of the styles we've chosen</p>
-<hr />
-<p><a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/collaboration/style_primer.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a></p>
+                <h1 id="cicd-policies">CI/CD Policies</h1>
+<p>TTS uses GitHub actions to automate a test suite each time code is pushed to any branch. This suite includes basic unit tests, but also includes checks for test coverage, documentation coverage, and security screening. Due to the great nuance involved in each of these checks (Do I need to close out every vulnerability, or am I OK with some risks? What should I think about unit tests written with AI?), this page documents some of the risk postures that the studio has identified.</p>
+<p>In general, this pattern follows those that will be recognizable to spacecraft operators. Provide verbose evidence of anything that <em>might</em> be an issue with a particular build, but give the operators the ability to override those results based on the particular risk postures of the project. Different teams will have different needs, and trying to provide a one-size-fits-all risk strategy is not suitable.</p>
+<p>However, because all TTS Core repositories are managed by the same team, we can make some basic assumptions here. Project adapting TTS can choose to take these same conventions or to tailor them to their own needs.</p>
+<h2 id="releases">Releases</h2>
+<p>In a perfect world, all of the CI/CD tests described below will roll up to one big ✅ by the time the code is released. But as we live in the real world, we expect that there will be some ⚠️'s in most releasesm and even potentially some ❌. The rules below are meant to set a baseline expectation for release standards for TTS, but the reality is that human beings are in the loop and should be trusted to deliver code that is capable, stable, and safe. All of the status emojis described below are meant to be tools for human operators.</p>
+<p>A roll up table will be reported on every PR (and updated each time a new commit is added), and a Tower report will be created with more verbose results. Tower also provides an interface for human developers to record their rationale for releasing the code in the state in which it was released. Any FLAGGED or VIOLATING tests (which correspond to ⚠️ and ❌) need to be dispositioned by a human at each release. This workflow is enforced in order to keep humans honest about understanding the risks they are taking when releasing any less than perfect code.</p>
+<h2 id="unit-testing">Unit Testing</h2>
+<p>Unit testing is further described in (tesing.md), this page only covers how conventions are handled in this CI/CD automation.</p>
+<h3 id="tests">Tests</h3>
+<p>In general all tests in a TTS repository should be working prior to release. There will be some cases where tests need to be masked using the xfail or skip features in pytest. This is not completely precluded, but should be avoided where possible. When it is truly impossible to avoid, a GH issue should be written against the masked test.</p>
+<p>Unit test suites with failing tests will be marked as ❌, those with xfails or skips as ⚠️, and those with all tests passing will show ✅.</p>
+<h3 id="test-coverage">Test Coverage</h3>
+<p>TTS strives for as full of test coverage as possible. The minimum allowable test coverage is 50%, and anything lower than that will be marked as ❌. Unit test suites with &gt;50% but &lt;80% will be marked as ⚠️, and &gt;80% gets ✅. These values may be reconsidered as coverage improves</p>
+<h3 id="tests-written-by-ai">Tests Written by AI</h3>
+<p>It is the policy of Teamtools Studio that any working unit tests are better than no tests at all, so we welcome the use of AI in expanding test coverage.</p>
+<p>However, while there is little risk to accepting a unit test produce by AI to the code itself, it may lull developers into a false sense of security. For this reason any tests written with AI should use pytest markers to mark them <code>unreviewed_ai</code> until a human is able to account for every line of the test. </p>
+<p>This way, AI-developed test coverage can be covered separately from those that have been reviewed by a person. Humans do not need to write every line of TTS software, but the human who commits it to the repository takes 100% responsibility for its contents. The <code>unreviewed_ai</code> flag keeps situational awareness of which unit tests need more scrutiny.</p>
+<h2 id="security-screening">Security Screening</h2>
+<h3 id="pip-audit">Pip Audit</h3>
+<p>Pip Audit reports on any publicly known vulnerabilities in the library or anywhere in its dependency tree. Pip audit vulnerabilities come in different severities, which flow into the urgency with which TTS requires they be mitigated.</p>
+<p>For MODERN python versions, all open vulnerabilities should be inspected and dispositioned. Any libraries that show known vulnerabilities but are no longer getting security updates should be removed from the depedency stack.</p>
+<p>For versions of python that themselves are no longer getting security updates (before 3.10, see https://devguide.python.org/versions/), vulnerabilities need to be taken on a case by case basis. Projects using older versions of Python are free to make their own cybersecurity decisions, but the should do so with a full understanding of the risks they are taking.</p>
+<h3 id="bandit">Bandit</h3>
+<p>Bandit and Pip audit go hand in hand. Whereas Pip Audit autids on the library level, Bandit goes line for line through the code to determine whether it has been used improperly anywhere (XML bombs come up a lot with the core Python XML implementation).</p>
+<h2 id="documentation">Documentation</h2>
+<p>TTS strives to have 100% docstring completion, but this is a never-ending process. Docstring coverage &gt;50% but &lt;80% will be marked as ⚠️, and &gt;80% gets ✅.</p>
+<p>This percentage includes a docstring for every method, function and class, with functions and classes getting documentation for every arg and kwarg. Classes get their primary documentation on the __init__ method, which should also have every arg and kwarg documented.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../cookbooks/" class="btn btn-neutral float-left" title="Cookbooks and Demos"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../styles_et_al/" class="btn btn-neutral float-right" title="Styles, Norms, and Best Practices">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../testing/" class="btn btn-neutral float-left" title="Testing Practices"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../releases/" class="btn btn-neutral float-right" title="Releases">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -182,10 +228,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../cookbooks/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../testing/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../styles_et_al/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../releases/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
