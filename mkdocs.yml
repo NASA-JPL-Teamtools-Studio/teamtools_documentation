@@ -30,6 +30,7 @@ nav:
       - Documentation Practices: collaboration/documentation.md
       - Verification and Validation: collaboration/verification_and_validation.md
       - Testing Practices: collaboration/testing.md
+      - CI/CD Policies: collaboration/ci_cd_policy.md
       - Releases: collaboration/releases.md
       - Training: training.md
       - Roadmap: collaboration/roadmap.md
