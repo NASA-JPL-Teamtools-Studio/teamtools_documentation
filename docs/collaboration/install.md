@@ -25,7 +25,7 @@ The library tts_ci_cd offers tools that will help you set up quickly. Begin by i
 
 `pip install tts-ci-cd`
 
-It can also be cloned and installed editbaly
+It can also be cloned and installed editably:
 
 `git clone git@github.com:NASA-JPL-Teamtools-Studio/tts_ci_cd.git`
 
