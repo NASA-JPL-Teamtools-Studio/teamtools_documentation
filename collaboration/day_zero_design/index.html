@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/day_zero_design/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Day Zero Teamtools System Design - Teamtools Studio Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Day Zero Teamtools System Design";
+        var mkdocs_page_input_path = "collaboration/day_zero_design.md";
+        var mkdocs_page_url = "/studio/teamtools_documentation/collaboration/day_zero_design/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Teamtools Studio Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../architecture/">Project Architecture</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../philosophy/">Design Philosophy</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Repositories</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dante/">Dante</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_data_utils/">Data Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dexter/">Dexter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dtat/">DTAT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_fresh/">FRESH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_html_utils/">HTML Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_papertrail/">Papertrail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_tower/">TOWER</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dictionary_interface/">TTS Dictionary Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_plan/">TTS Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_seq/">TTS Seq</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_starter_template/">TTS Starter Tempalte</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_spice/">TTS Spice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_utilities/">TTS Utilities</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Collaboration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/">Start here</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fudamental_concepts/">Fundamental Concepts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install/">Initial installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cookbooks/">Cookbooks and Demos</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../style_primer/">Style Primer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Styles, Norms, and Best Practices</a>
+    <ul>
+                <li class="toctree-l2"><a class="" href="../first_time_setup.md">First Time Setup for New Projects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../styles_et_al/">Coding Style</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../verification_and_validation/">Verification and Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ci_cd_policy/">CI/CD Policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../roadmap/">Roadmap</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../governance/">Governance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../licence/">Licensing</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference Project</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/demosat_description/">DemoSat Reference Project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/demosat_libraries/">DemoSat Adaptation Libraries</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/fprime/">DemoSat F-Prime Build</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Teamtools Studio Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Day Zero Teamtools System Design</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="day-zero-teamtools-system-design">Day Zero Teamtools System Design</h1>
+<p>Along with the libraries delivered by the Teamtools Studio, we also maintain this document on best practices and a "day zero" reference design for the Teamtools system. As a reminder, we expect that these libraries will not constitute the full stack of your mission's ground software, but will instead be deployed alongside a GDS that fulfills the majority of your ground tooling needs.</p>
+<p>This document includes best practices for organizing your GitHub repositories, setting up your initial codebase, and structuring your mission-specific adaptations of the Teamtools libraries.</p>
+<h2 id="a-word-on-long-term-team-dynamics">A word on long-term team dynamics</h2>
+<p>Typical missions at JPL start with a relatively modest number of engineers to begin designing the system and writing requirements, expand as designs become more mature and are implemented, and peak in size at launch or landing. As development completes (some is typically deferred past the beginning of prime mission), team members start to roll off, and the project then continues to shrink forever, especially as it goes into extended operations and sustainment.</p>
+<p>Throughout this expansion and contraction, new teams will form, develop their own cultures, and eventually deliver their part of the system to someone else who will then operate and eventually retire the system. As the specifics will be different from project to project, the Teamtools system cannot be designed perfectly a priori. Instead, it must be designed to be flexible and to understand the fact that responsibility of its constituent parts will pass from person to person and team to team. There is no guarantee that any one author of a tool will ever talk to, let alone even know those who own it in the future, nor can it be guaranteed that any one engineer will continue to work on the project, work at JPL or even still be alive by the time the project is finally decommissioned.</p>
+<h2 id="the-systems-teamtools-lead">The Systems Teamtools Lead</h2>
+<p>As JPL mission Teamtools implementations have expanded and become more complex, most projects eventually begin to recognize that there is a critical mass of engineering complexity within the Teamtools developed by the project. As such, many missions have decided to staff roles specifically to manage this complexity. This includes</p>
+<ul>
+<li>Mars 2020 Engineering Operations Uplink Teamtools Lead</li>
+<li>Mars 2020 Engineering Operations Downlink Teamtools Lead</li>
+<li>Mars 2020 Robotic Operations Teamtools Lead</li>
+<li>Europa Clipper Spacecraft Team Teamtools Lead</li>
+<li>Sample Retrieval Lander Systems Teamtools Lead</li>
+</ul>
+<p>Starting on Sample Retrieval Lander, the Teamtools Lead role began to be identified as one that typically is added too late, only after many ships have sailed and much unnecessary complexity has been added to the system. For this reason, the SRL Mission System Team scoped a Systems Teamtools Lead role to begin as early as early Phase C.</p>
+<p>The Systems Teamtools Lead should be a teamtools practitioner themselves, which is to say they should NOT be from GDS (or at least not solely). Instead they should be a boots-on-the-ground operator. Depending on the phase of the project, this might mean they are a Testbed, ATLO or Flight Operations engineer. But the ethos of the Teamtools studio is that operators are better at solving some subset of software problems due to their proximity to the technical challenges, risks, and operational cadence of doing the work directly.</p>
+<p>The specific responsibilities of the Systems Teamtools Lead will vary project to project, but they should include</p>
+<ul>
+<li>Maintaining the systems virtual environment (see below)</li>
+<li>Being a primary contact with the GDS, delivering system-wide impacts on things like upgrading operating systems and Python versions</li>
+<li>Holding a Teamtools Working Group to educate and communicate out to the entire project's community<ul>
+<li>Often these meetings are best held sporadically or ad hoc based on the needs of any one moment on the project</li>
+</ul>
+</li>
+<li>Advertising and demonstrating the use of shared libraries, and providing guidance on how to best use them</li>
+<li>Formal ownership of any TTS adaptations and shared libraries developed by the project</li>
+</ul>
+<p>On very large projects, it may be prudent to staff more than one engineer in this role, especially in moments like the transition to ops where deep perspective on both where the system has come from and where it is going are key to success.</p>
+<h2 id="virtual-environments-and-their-management">Virtual Environments and their management</h2>
+<p>Historically when using Python at JPL, GDS teams managed system Python environments for the use of Teamtools users. But as users became more and more sophisticated, they continually demanded more flexibility. As such, the norm that most projects have settled on (and TTS explicitly endorses) is to use virtual environments controlled by the Teamtools community to manage libraries available to users and developers.</p>
+<p>The currently accepted best practice is to control the environment via a <code>requirements.txt</code> file in git. Teams wanting new libraries create issues or pull requests to formally request them, and the Systems Teamtools Lead reviews and approves these requests before merging them into the main branch. This formality may seem like overkill early in the mission, but as complexity grows, paper trails are essential to understand whether requirements are still needed and to know what can be regularly pruned. Otherwise the requirements will bloat and the lead will not be able to assess the risk in removing or updating any given repository.</p>
+<p>Some projects have tried using different branches in git for development and staging, but in reality these have seen limited use. Successful management of teamtools is a balance of agility and formality, and so far no one has found a particularly useful way to utilize such branches effectively. The story with develop and staging artifactory indexes is similar. A small group of teamtools core developers may want to have this functionality, but it is generally not useful to the full team.</p>
+<p>Teamtools Studio currently uses the Python <code>venv</code> module as the state of practice for creating and maintaining virtual environments, but we are aware that some teams prefer <code>uv</code>, <code>conda</code>, or <code>miniforge</code>. The decision to use <code>venv</code> is not hard and fast, but it is still recommended to standardize the work of teamtool developers.</p>
+<p>Despite the utility of the systems virtual environment, the Teamtools Studio does not recommend that all teams blindly use it. There will be some instances where it makes sense for individual teams to maintain their own virtual environments for some tooling. This is often the case when teams come to a project with legacy code from former projects and does not have the budget to fully modernize their tooling. While continually modernizing all software on the project should be the norm, it is sometimes simply not possible, and allowing teams to manage their own environments is a tool in the teamtools toolbox. However, any team that decides to manage their own venv should understand that they are doing so <strong>ON RISK</strong>. The decision or not to modernize a team's software should hinge strongly on the likelihood that their software will need to be run in a different environment, or reused in some way. The more self-contained the application, the more acceptable it is to just manage it on its own. But even something like an automation pipeline can be easily stymied by non-systems virtual environments.</p>
+<h2 id="github-org-design">GitHub Org Design</h2>
+<p>GitHub organizations are a place where missions often introduce unnecessary complexity without realizing they are doing it. Teamtools Studio recommends setting up organizations to manage access control, and as such orgs should be created for each major team on the project. Repositories should not necessarily be created on a per team basis, but instead based on function. Remember that the organizations that work best for development in Phases C and D often are not the same as those that make the most sense in operations.</p>
+<p>At a minimum, a mission needs to have an organization dedicated to the Systems Teamtools. This will include an environment repository as well as repositories for each of the TTS adaptations described below.</p>
+<p>TTS strongly recommends that ALL mission repositories maintain read access for all JPL users, or when necessary, limits read access to only [mission_name]_teamtools_users (see below). While write access can be prudently locked to only a small subset of users on a team, read access should default to as broad as is allowable by a project's information control policies.</p>
+<h2 id="ldap-and-gh-groups">LDAP and GH Groups</h2>
+<p>TTS recommends every project maintains a [mission_name]_teamtools_admin and [mission_name]_teamtools_users LDAP groups and GitHub groups with the same names and synced users on each. This enables permission management and communication to be as common as possible between GitHub orgs, GitHub Actions, Artifactory, Outlook Calendar invites, and any email announcements that need to be made.</p>
+<p>It may also be prudent to have groups/lists like [mission_name]_[subsystem]_teamtools, but those decisions are better made by the project.</p>
+<h2 id="github-org-design-example-large-mission">GitHub Org Design Example (large mission)</h2>
+<table>
+<thead>
+<tr>
+<th>Organization Name</th>
+<th>Description</th>
+<th>Key Repositories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Mission Name] System Teamtools</td>
+<td>Core teamtools infrastructure and shared libraries</td>
+<td>environment, [msn]_data_utils, [msn]_ddp, [msn]_dictionary_interface, [msn]_query</td>
+</tr>
+<tr>
+<td>[Mission Name] Flight Software</td>
+<td>Flight software development</td>
+<td>As needed per FSW team</td>
+</tr>
+<tr>
+<td>[Mission Name] Flight Software Integration and Test</td>
+<td>Flight software development and testing</td>
+<td>As needed per FIT team</td>
+</tr>
+<tr>
+<td>[Mission Name] Flight System</td>
+<td>Flight software development and testing</td>
+<td>As needed per FSSE subsystems (e.g. Power, Thermal, Avionics, etc)</td>
+</tr>
+<tr>
+<td>[Mission Name] Robotics System</td>
+<td>Instrument-specific ground tools and data processing</td>
+<td>As needed per robotic subsystems (e.g. Mobility, Arm, Drill)</td>
+</tr>
+<tr>
+<td>[Mission Name] Instrument Engineering</td>
+<td>Instrument-specific ground tools and data processing</td>
+<td>As needed per IE subsystems</td>
+</tr>
+<tr>
+<td>[Mission Name] Mission System</td>
+<td>Operations planning, scheduling, and monitoring</td>
+<td>Operations specific reporting, simulation support, generation of ops products</td>
+</tr>
+</tbody>
+</table>
+<h2 id="github-org-design-example-small-mission">GitHub Org Design Example (small mission)</h2>
+<table>
+<thead>
+<tr>
+<th>Organization Name</th>
+<th>Description</th>
+<th>Key Repositories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Mission Name] System Teamtools</td>
+<td>Core teamtools infrastructure and shared libraries</td>
+<td>environment, tts_data_utils, tts_telemetry, tts_commanding, tts_sequencing</td>
+</tr>
+<tr>
+<td>[Mission Name] Flight System</td>
+<td>Flight software development and testing</td>
+<td>As needed by FSW/FSSE teams</td>
+</tr>
+<tr>
+<td>[Mission Name] Operations</td>
+<td>Flight software development and testing</td>
+<td>Operations specific reporting, simulation support, generation of ops products</td>
+</tr>
+<tr>
+<td>[Mission Name] Analysis Tools</td>
+<td>Shared analysis tools</td>
+<td>As needed</td>
+</tr>
+</tbody>
+</table>
+<p>Note that these are notional reference designs and are not prescriptions. Every project will have its own needs and setups. The key is to remember that tooling may change hands and organizations that exist in early development may not in operations and vice versa. Both GitHub Organization and Repository design should always be done in atomic enough ways that ownership changes can be easily accomplished by moving repositories from one organization to another, even if the new organization did not exist until recently.</p>
+<p>It is also imperative to notice that Mission System and Flight System will need to collaborate on this design. Many tools that begin their lives as analysis tools on testbeds will need to be used in operations and this atomicity will be key to enabling a smooth transition to operations.</p>
+<h2 id="day-zero-repositories">Day Zero Repositories</h2>
+<p>Because they are so fundamental to the way we do work at JPL, Teamtools Studio recommends that <strong>EVERY</strong> project includes adaptations of 4 libraries on day zero. Even if some of the adaptations are little more than a passthrough, it is extremely important to have a mission adaptation layer. Much of the Teamtools Studio design philosophy is built around class extension. This derives directly from our design philosophy that <a href="../../philosophy/#projects-manage-their-own-risk">Projects manage their own risk</a>. Even a very simple adaptation plus the instructions to your project to use the project-specific libraries means that you can change the behavior of the library at any time without waiting for TTS to make changes. This is a powerful tool for managing risk and ensuring that your project can move forward even if TTS is not able to support your specific use case on the timeline that you need it. If your users are using your extensions, then you can drop in new or changed functionality at any time on your own schedule without needing your users to change anything in many cases. Often you will still want to negotiate with TTS to get changes into the core (especially bug fixes), but this way negotiations with parties outside of your project happens <strong>AFTER</strong> you fix your own problem instead of before someone else fixes it for you.</p>
+<p>While projects should explore all repositories to decide which adaptations are necessary, the following are the essential set to be adapted for day 0.</p>
+<ul>
+<li><a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_query/blob/main/README.md">tts_query</a>: The query switchboard. Often projects do not have the same database for early in the project and in mature operations (e.g. Legacy AMPCS vs Chillax or Elasticsearch). This library is a simple wrapper around all query interfaces in a project so users can write code that is agnostic to query source outside of a single keyword argument. This library is extremely important for testbed and ATLO code that will be reused in operations as data backends often change at the transition to operations.</li>
+<li><a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_dpp/blob/main/README.md">tts_dpp</a>: Data Product Parsing. DPP does not do much data product parsing on its own besides calling the EAS studio's <code>dplib</code> when available. Instead it provides a common library for DP owners to provide parsers to a common interface for engineers across the project. It is extremely valuable when products have use cases beyond the team that owns them (e.g. Command History). </li>
+<li><a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_dictionary_interface/blob/main/README.md">tts_dictionary_interface</a>: Dictionaries are the Rosetta Stone of spacecraft engineering, but historically JPL missions have not had common ways of accessing them, often with many teams using tools like XML2Dict or lxml to parse them on an ad hoc basis. While there have been some cases of cross-team dictionary ingestors at JPL, <code>tts_dictionary_interface</code> goes even one step further, creating a common interface across <strong>projects</strong>. This is extremely useful for tooling that will use dictionaries later like <code>tts_seq</code> and enables optional but powerful capabilities in tools like <code>tts_data_utils</code> by enforcing conventions that allow TTS core developers to make key interface assumptions about how to retrieve dictionary information from a project without knowing a priori what that project's dictionaries look like exactly.</li>
+<li><a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_data_utils/blob/main/README.md">tts_data_utils</a>: Shared analysis toolkit. <code>tts_data_utils</code> provides among other classes, the <code>tts_data_frame</code>. This is an extension of the Pandas dataframe, and borrows heavily from <code>mech_data_tools</code> on Mars 2020. This allows teams to create dataframes that contain logic specific to their use cases like parsing EVR information or finding contiguous chanvals that are in alarm. The functionality enabled by <code>tts_data_utils</code> is fairly open ended, but it includes:<ul>
+<li>Interpolation of channels for scatter plotting, even when channels are reported at different times (with configurable options for how to interpolate and when )</li>
+</ul>
+</li>
+</ul>
+<p>The convention for naming adaptations is to replace TTS in each with a three or four letter identifier for your mission (e.g. SRL, M20, EURC)</p>
+<p>TTS also recommends installing <a href="https://github.com/NASA-JPL-Teamtools-Studio/tts_dtat/blob/main/README.md"><code>tts_dtat</code></a>, which has not yet been massaged into the same class extension model as the others</p>
+<p>Teams using Teamtools Studio from within JPL should reach out to Section 326 or the Teamtools Studio for support. Adaptation is straightforward, but will be even faster with support from the Teamtools Studio team. One FTE week should be more than sufficient for initial setup (including margin).</p>
+<p>Teams outside of JPL are free to ask questions in the public discussions and should follow the DemoSat examples. </p>
+<hr />
+<p><a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/collaboration/day_zero_design.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
