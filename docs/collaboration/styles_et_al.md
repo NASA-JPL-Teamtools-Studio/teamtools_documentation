@@ -1,7 +1,5 @@
 # Styles, Norms, and Best Practices
 
-We use PEP8, we keep in sync with Python Black, blah blah blah
-
 ## Leave \_\_init\_\_.py alone!
 It is the posture of this project that init files should be blank unless there is some reason to alias for continuous 
 integration reasons like continuing to support a previous naming convention during a transition prior to deprecation. 
