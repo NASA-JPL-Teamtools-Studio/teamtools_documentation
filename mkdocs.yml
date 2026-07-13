@@ -27,7 +27,7 @@ nav:
       - Cookbooks and Demos: collaboration/cookbooks.md
       - Style Primer: collaboration/style_primer.md
       - Styles, Norms, and Best Practices: 
-        - First Time Setup for New Projects: collaboration/first_time_setup.md
+        - First Time Setup for New Projects: collaboration/day_zero_design.md
         - Coding Style: collaboration/styles_et_al.md
       - Documentation Practices: collaboration/documentation.md
       - Verification and Validation: collaboration/verification_and_validation.md
