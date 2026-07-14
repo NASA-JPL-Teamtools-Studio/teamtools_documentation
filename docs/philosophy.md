@@ -12,6 +12,9 @@ In order to have as coherent a product as possible, the Teamtools Studio has mad
 > 
 > **Design Influence** Some tools have other components under the hood (JavaScript in html_utils). But end users should see only Python wherever possible.
 
+## Be mindful of the resources that your code touches
+> Testing and maintenance will go much better if you can run your software from anywhere. Of course for space missions this will never fully be the case as you will need to access mission resources like telemetry data stores, which can very rarely be containerized in meaningful ways. However, avoid the trap of writing mission-specific resources too deeply in your tech stack. To the maximum extent possible, try to architect so the logic that truly needs to touch mission resources (with their access controls and limited access from non-mission machines) such that they can be replaced by a mock in a unit test or develpment areas. This can be as simple as leveraging the patters in `tts_data_utils` to build tests around CSVs instead of database calls that create tabular Pandas data. It will feel like extra work when you need to do it, but it will repay on 10x in risk reduction via reduction of technical debt and the portability of your tools.
+
 ## Projects manage their own risk
 > **Rationale** No one will want to use this stuff if they feel like we’re tying their hands. People closest to the risk should always make the assessment of it. That is not TTS even though individual TTS developers may be on a project where they assess risk.
 > 
