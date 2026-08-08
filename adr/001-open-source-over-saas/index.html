@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/adr/001-open-source-over-saas/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>ADR 001 — Prefer Open Source over SaaS for Developer Tooling - Teamtools Studio Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ADR 001 \u2014 Prefer Open Source over SaaS for Developer Tooling";
+        var mkdocs_page_input_path = "adr/001-open-source-over-saas.md";
+        var mkdocs_page_url = "/studio/teamtools_documentation/adr/001-open-source-over-saas/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Teamtools Studio Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../architecture/">Project Architecture</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../philosophy/">Design Philosophy</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Repositories</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dante/">Dante</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_data_utils/">Data Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dexter/">Dexter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dtat/">DTAT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_fresh/">FRESH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_html_utils/">HTML Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_papertrail/">Papertrail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_tower/">TOWER</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dictionary_interface/">TTS Dictionary Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_plan/">TTS Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_seq/">TTS Seq</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_starter_template/">TTS Starter Tempalte</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_spice/">TTS Spice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_utilities/">TTS Utilities</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Collaboration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/collaboration/">Start here</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/fudamental_concepts/">Fundamental Concepts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/install/">Initial installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/cookbooks/">Cookbooks and Demos</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/style_primer/">Style Primer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Styles, Norms, and Best Practices</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../collaboration/day_zero_design/">First Time Setup for New Projects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../collaboration/styles_et_al/">Coding Style</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/documentation/">Documentation Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/verification_and_validation/">Verification and Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/testing/">Testing Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/ci_cd_policy/">CI/CD Policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/releases/">Releases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/roadmap/">Roadmap</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/governance/">Governance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/licence/">Licensing</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference Project</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/demosat_description/">DemoSat Reference Project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/demosat_libraries/">DemoSat Adaptation Libraries</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/fprime/">DemoSat F-Prime Build</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Teamtools Studio Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">ADR 001 — Prefer Open Source over SaaS for Developer Tooling</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="adr-001-prefer-open-source-over-saas-for-developer-tooling">ADR 001 — Prefer Open Source over SaaS for Developer Tooling</h1>
+<p><strong>Status</strong>: Accepted<br />
+<strong>Date</strong>: 2026-08-08<br />
+<strong>Deciders</strong>: TTS Core Team</p>
+<h2 id="context">Context</h2>
+<p>TTS is used across JPL missions with varied network and security environments. Developer tooling choices (CI, testing infrastructure, visual regression, reporting) carry long-term risk beyond just technical fit: a vendor can be acquired, discontinue a product, change pricing, or become inaccessible from a secure facility.</p>
+<p>This ADR establishes the ecosystem-wide preference for open-source, self-hosted tooling over SaaS solutions for all developer infrastructure.</p>
+<h2 id="decision">Decision</h2>
+<p><strong>Prefer open-source, self-hosted, or locally-runnable tooling over SaaS products for all TTS developer infrastructure.</strong></p>
+<p>This applies to:
+- Visual regression testing (e.g., Percy vs. Playwright vs. custom hash-based review)
+- CI/CD infrastructure (e.g., GitHub Actions vs. hosted CI products)
+- Test reporting and dashboards
+- Documentation hosting
+- Any other tooling that developers depend on to build and validate TTS libraries</p>
+<p>When a SaaS alternative exists alongside an open-source option, the open-source option is chosen unless there is a compelling technical reason the SaaS capabilities cannot be replicated locally.</p>
+<h2 id="rationale">Rationale</h2>
+<ol>
+<li><strong>Vendor risk</strong>: A SaaS company can be acquired, discontinue its product, or change pricing at any time. When that happens, every TTS workflow that depends on it breaks simultaneously across all missions.</li>
+<li><strong>JPL network constraints</strong>: JPL is a secure facility. Tools that upload data to external servers (screenshots, HTML, source code) require security review and may be prohibited outright. An assumption that any SaaS tool is accessible from all TTS environments is unsafe.</li>
+<li><strong>Portability</strong>: TTS libraries are used on small missions with minimal IT infrastructure and on large flagship missions with strict software controls. Self-hosted or local tools work in both environments without configuration differences.</li>
+<li><strong>Auditability</strong>: Open-source tools can be inspected, forked, and patched if they contain bugs or security issues. SaaS tools cannot.</li>
+<li><strong>Cost predictability</strong>: Open-source tooling has no per-seat or per-run pricing. This removes a variable from the long-term operational cost of the TTS ecosystem.</li>
+</ol>
+<h2 id="alternatives-considered">Alternatives Considered</h2>
+<h3 id="percy-browserstack">Percy (BrowserStack)</h3>
+<ul>
+<li><strong>What it does</strong>: Captures screenshots of rendered HTML in CI, uploads to BrowserStack's cloud, provides visual pixel-level diffs against an approved baseline.</li>
+<li><strong>Why rejected</strong>: Requires uploading rendered output to an external cloud service (security risk at JPL), subject to vendor pricing changes (BrowserStack has changed pricing multiple times), requires network access from CI runners, and SaaS continuity is not guaranteed.</li>
+<li><strong>Note</strong>: JPL may have an enterprise Percy account. This is irrelevant to TTS because individual missions using TTS libraries may not have the same account access, and the vendor risk remains regardless of current availability.</li>
+</ul>
+<h3 id="playwright-screenshot-tests">Playwright screenshot tests</h3>
+<ul>
+<li><strong>What it does</strong>: Open-source browser automation. Can take screenshots locally and compare pixel-by-pixel against stored PNG baselines.</li>
+<li><strong>Why not chosen</strong>: Requires a Chromium/Firefox browser binary (~300MB) as a CI dependency. Pixel comparison is fragile across OS/CI environments (font hinting, subpixel antialiasing differ). More importantly, <code>--update-snapshots</code> can be run by an automated agent without human review — the "human must have looked" guarantee is documentation-only, not structural.</li>
+</ul>
+<h3 id="pytest-snapshot">pytest-snapshot</h3>
+<ul>
+<li><strong>What it does</strong>: Stores output (HTML, text, etc.) as snapshot files. Fails if output differs from stored snapshot. Updated via <code>--snapshot-update</code>.</li>
+<li><strong>Why not chosen</strong>: The <code>--snapshot-update</code> flag can be run by an AI agent or a developer without actually reviewing the output. There is no structural forcing function that requires human inspection. Documentation-only constraints get violated in practice.</li>
+</ul>
+<h3 id="chosen-approach-hash-based-human-certification">Chosen approach: hash-based human certification</h3>
+<ul>
+<li>SHA-256 sidecar files (<code>.sha256</code>) committed alongside inspection HTML artifacts.</li>
+<li><code>certify.py --certify</code> is the only way to update the hash. It is a separate, explicitly-human-facing script, outside the test runner.</li>
+<li><code>certify.py</code> (no args) generates a status dashboard (<code>inspection_status.html</code>) as the human entry point — no magic procedure steps required.</li>
+<li><code>check_inspection_hash()</code> enforces the contract in the test: uncertified or stale artifacts fail the <code>@pytest.mark.inspection</code> test.</li>
+<li>Works for HTML, CSV, Excel, and any other byte-stream artifact type.</li>
+<li>No external dependencies, no network access, no browser binary.</li>
+</ul>
+<h2 id="consequences">Consequences</h2>
+<ul>
+<li>TTS developer tooling will occasionally be less polished than a best-in-class SaaS product.</li>
+<li>The tradeoff is accepted: reliability, security compatibility, and vendor independence matter more than UI polish on internal tooling.</li>
+<li>When an open-source tool does not yet exist for a need, TTS builds a minimal one (as with the inspection certification machinery) rather than adopting a SaaS dependency.</li>
+<li>Future agents and contributors should apply this preference actively. If adding a new CI tool or testing dependency, check: can this be done open-source/locally? If yes, do that.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
