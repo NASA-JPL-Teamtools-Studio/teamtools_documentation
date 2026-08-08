@@ -5,6 +5,7 @@ While you are free to install these libraries wherever you want, we find that it
 The first thing you will want to do is to make and cd into a new workdir.
 
 `mkdir /path/to/your/workdir`
+
 `cd /path/to/your/workdir`
 
 If you work with TTS on multiple projects, it may even be prudent to have a different setup per project. This is especially true if your different projects use different versions of Python.
