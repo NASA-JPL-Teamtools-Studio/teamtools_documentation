@@ -21,7 +21,7 @@ This applies to:
 - Documentation hosting
 - Any other tooling that developers depend on to build and validate TTS libraries
 
-When a SaaS alternative exists alongside an open-source option, the open-source option is chosen unless there is a compelling technical reason the SaaS cannot be replicated locally.
+When a SaaS alternative exists alongside an open-source option, the open-source option is chosen unless there is a compelling technical reason the SaaS capabilities cannot be replicated locally.
 
 ## Rationale
 
@@ -50,7 +50,7 @@ When a SaaS alternative exists alongside an open-source option, the open-source 
 - SHA-256 sidecar files (`.sha256`) committed alongside inspection HTML artifacts.
 - `certify.py --certify` is the only way to update the hash. It is a separate, explicitly-human-facing script, outside the test runner.
 - `certify.py` (no args) generates a status dashboard (`inspection_status.html`) as the human entry point — no magic procedure steps required.
-- `check_inspection_hash()` enforces the contract in the test: uncertified or stale artifacts fail the `@pytest.mark.human_review` test.
+- `check_inspection_hash()` enforces the contract in the test: uncertified or stale artifacts fail the `@pytest.mark.inspection` test.
 - Works for HTML, CSV, Excel, and any other byte-stream artifact type.
 - No external dependencies, no network access, no browser binary.
 

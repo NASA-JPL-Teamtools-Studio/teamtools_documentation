@@ -25,8 +25,7 @@ and complex Ground Data Systems (GDS) before they consider our work, but pick up
 larger, less agile tools, or to use them to solve last mile problems that GDS tools do not solve well for various reasons. 
 
 The most significant of these is the fact that GDS developers typically only have modest operations experience, and operators are
-typically better at solving the very specific and deep problems. Historically, this has meant that the last mile layer has been
-messy and hard to maintain. By delivering the first three quarters of that last mile, TTS hopes to enable operators.
+typically better at solving the very specific and deep problems. The “last mile” is the gap between what a GDS delivers and what an operations team actually needs day-to-day. Historically, this gap has been messy and hard to maintain. By delivering the penultimate three quarters of that last mile — the reusable foundation — TTS hopes to enable operators. The remaining quarter is mission-specific: it comes from the operations teams for whom these tools are named.
 
 While the primary use case of TTS is to take libraries one at a time a la carte, a significant set of functions needed to plan
 spacecraft activities and keep a vehicle safe are implemented here. And for a mission on the order of magnitude of a cubesat or
@@ -39,10 +38,7 @@ and educators. We have chosen to support Python versions as far back as 3.6 beca
 debt that keeps them attached to these old versions, and we want these tools to be available to them as well (although please,
 if you have the power, use something more modern).
 
-While we have not ruled out the possibility entirely, TTS is also generally unintersted in writing applications. Nothing you
-see here is in itself stateful. It might connect to a database, or might write to a file system, but we make as few assumptions
-about those technologies as possible, expecting our customers to bring their own solutions. We use a lot of HTML, but do not
-currently support any web apps, and if we did they would similarly not be stateful.
+While we have not ruled out the possibility entirely, TTS is generally not in the business of writing applications. TTS libraries process and hand off data — they do not own or maintain persistent state. They may read from databases or write to file systems, but managing those systems is the customer’s responsibility, not TTS’s. We produce a lot of HTML, but do not currently support web applications, and if we did, they would similarly not manage their own persistent state. Things like file system maintenance, database administration, and infrastructure management fall on customer projects.
 
 ## Interoperability
 TTS has also put siginifant effort into interoperability. For this reason, you will see many Abstract Base Classes throughout
