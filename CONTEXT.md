@@ -139,6 +139,7 @@ Automated assertions are necessary but not sufficient. When a feature produces v
 - The test that writes the artifact must still pass with a programmatic assertion (e.g., the file was created and is non-empty). Human inspection is in addition to, not instead of, automated tests.
 - Add a `print()` statement in the test that outputs the absolute path to the artifact so it is easy to find in the test runner output.
 - Gitignore patterns must not exclude these files — they are part of the repo.
+- **Mark every inspection test class with `@pytest.mark.human_review`**. This is the signal to CI and reviewers that the test requires eyes, not just a passing assertion. Register the marker in `pyproject.toml` — see `docs/collaboration/testing.md` for the full CI job structure.
 
 **Hash-based human certification:**
 
@@ -167,22 +168,62 @@ The `inspection_status.html` dashboard is a generated file (not committed). The 
 
 **Example: PowerTable with sorting and filtering**
 ```python
+import pytest
 from tts_data_utils.test.core.inspection_utils import check_inspection_hash
 
 _OUT = Path(__file__).parent / "test_files" / "my_feature_inspection.html"
 
-def test_write_inspection_html(self):
-    from tts_html_utils.core.compiler import HtmlCompiler
-    frame = MyFrame(MY_DATA, coerce=False, validate=False)
-    compiler = HtmlCompiler("My Feature Inspection")
-    compiler.add_body_component(
-        frame.power_table(add_sorting="local", add_filters="local")
-    )
-    compiler.render_to_file(_OUT)
-    print(f"\nHuman-inspectable output: {_OUT.resolve()}")
-    assert _OUT.exists() and _OUT.stat().st_size > 0
-    check_inspection_hash(_OUT)   # fails until human certifies
+@pytest.mark.human_review
+class TestMyFeatureInspection:
+    def test_write_inspection_html(self):
+        from tts_html_utils.core.compiler import HtmlCompiler
+        frame = MyFrame(MY_DATA, coerce=False, validate=False)
+        compiler = HtmlCompiler("My Feature Inspection")
+        compiler.add_body_component(
+            frame.power_table(add_sorting="local", add_filters="local")
+        )
+        compiler.render_to_file(_OUT)
+        print(f"\nHuman-inspectable output: {_OUT.resolve()}")
+        assert _OUT.exists() and _OUT.stat().st_size > 0
+        check_inspection_hash(_OUT)   # fails until human certifies
 ```
+
+### Discoverability
+
+Code and tooling must tell users what to do next, not just what went wrong. Apply the Discoverability principle (see `docs/philosophy.md`) at every layer:
+
+- **Error messages** must include actionable next steps, not just the failure condition.
+- **CLI tools** invoked with no arguments must show status or help, never fail silently.
+- **Constraint enforcement** must be structural, not documentary. A rule documented in a README that a developer or AI can violate without noticing is not enforced — it is aspirational.
+
+```python
+# Correct — error tells the user exactly what to do
+raise AssertionError(
+    f"\nNo certification hash found for: {html_path.name}"
+    f"\n\n  Steps to certify:"
+    f"\n    1. Open in browser: {html_path.resolve()}"
+    f"\n    2. Verify the output looks correct."
+    f"\n    3. Run: python certify.py"
+    f"\n    4. Commit the resulting .sha256 file.\n"
+)
+
+# Wrong — error only states the fact
+raise AssertionError(f"Hash mismatch for {html_path.name}")
+```
+
+### Prefer explicit over implicit
+
+Favor explicit, readable declarations over magic strings, sentinel values, or inferred behavior. When a class variable or function parameter can be ambiguous, give it a form that makes its meaning obvious without requiring the reader to look up a convention.
+
+```python
+# Correct — the type is declared explicitly in SCHEMA
+SCHEMA = [('scet', jpl_time.Time), ('label', str), ('value', float)]
+
+# Wrong — magic string that requires convention knowledge to decode
+TIME_FORMATS = {'scet': 'jpl_time.ISOD'}  # 'jpl_time.' prefix as a sentinel is implicit
+```
+
+This principle applies to every layer of TTS: class variables, API parameters, configuration files, and test data. When in doubt, write it out.
 
 ### Python version support
 

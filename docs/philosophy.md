@@ -33,5 +33,15 @@ In order to have as coherent a product as possible, the Teamtools Studio has mad
 > **Design Influence** Drives branding in reporting, logos, library naming (e.g. tts-library-name), dedicated GitHub Organization
 
 
+## Prefer open source over SaaS
+> **Rationale** A SaaS vendor can be acquired, change pricing, or go offline. Institutional security environments may block external data uploads entirely. TTS must work on small missions with minimal IT infrastructure and on flagship missions with strict software controls — a tool that requires cloud access fails in both. Interaction with SaaS products by projects extending TTS should not be excluded per the **Projects manage their own risk** philosophy above, but none should be required.
+>
+> **Design Influence** When open-source tooling exists for a need, use it. When it doesn't, build a minimal version rather than adopting a SaaS dependency. See `docs/adr/001-open-source-over-saas.md` for the specific decision on visual regression tooling. This principle is active — future contributors and agents should apply it to any new CI tool, testing library, or reporting dependency.
+
+## Discoverability
+> **Rationale** Magic procedure steps — things humans "just have to know" — create barriers to contribution, cause errors when steps are forgotten, and are invisible to AI agents. The right behavior should be easy to find. The wrong behavior should be hard to do accidentally. This is as true in sofware development as it is in spacecraft operations. Complex systems will necessarily have more human minds devoted to them in implementation phases than ops, sustainment, and maintenance. Posturing ourselves explicitly towards discoverability helps overcome the common pitfalls in later phases of JPL missions.
+>
+> **Design Influence** Error messages must tell you what to do next, not just what went wrong. Status dashboards and reports surface what needs attention without requiring the user to know where to look. Code structures that enforce constraints are preferred over documentation-only rules. APIs and CLI tools are self-describing wherever possible.
+
 ---
 <a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/philosophy.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>

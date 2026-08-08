@@ -56,5 +56,42 @@ at run time.
 
 See https://https://nasa-jpl-teamtools-studio.github.io/tts_ci_cd/ for latest matrix test results
 
+## Inspection Tests and the `@pytest.mark.human_review` Marker
+
+Some tests produce visual output (HTML tables, styled reports, CSV exports) that cannot be fully verified by machine assertion. These are **inspection tests** and they carry a distinct marker:
+
+```python
+@pytest.mark.human_review
+class TestMyFeatureInspection:
+    def test_write_inspection_html(self):
+        ...
+```
+
+**Rules for inspection tests:**
+- Mark every inspection test class (or individual test) with `@pytest.mark.human_review`. This is the signal to both CI and humans that the test requires eyes, not just an assertion.
+- The test generates an artifact to `src/<package>/test/core/test_files/<feature>_inspection.html` and calls `check_inspection_hash(path)` at the end.
+- `check_inspection_hash` fails until a human runs `python src/<package>/test/certify.py` (no args to see status, `--certify` to stamp approval) and commits the resulting `.sha256` sidecar file.
+- **Never update `.sha256` files from CI or AI agents.** They are the human stamp of approval.
+
+**CI job structure — two separate jobs required:**
+
+| Job | Command | Blocks merge? |
+|-----|---------|--------------|
+| Unit tests | `pytest -m "not human_review"` | Yes |
+| Inspection tests | `pytest -m human_review` | Yes |
+
+Both jobs must pass. Running them separately makes it immediately clear in the PR status whether a failure is a machine test (logic bug) or an inspection test (visual change needing human review). See `docs/adr/001-open-source-over-saas.md` for why we built this rather than adopting a SaaS visual regression tool.
+
+**Entry point for reviewers:** run `python src/<package>/test/certify.py` to generate `test_files/inspection_status.html` — a self-contained dashboard listing every artifact with its review state and a clickable link. Point reviewers here, not at the test output.
+
+**Registering the marker:** add to `pyproject.toml`:
+
+```toml
+[tool.pytest.ini_options]
+markers = [
+    "human_review: test produces visual output requiring human inspection before passing",
+]
+```
+
 ---
 <a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/collaboration/testing.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>
