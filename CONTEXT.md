@@ -44,6 +44,50 @@ _Avoid_: "events," "log messages," "alarm messages"
 The HTML/Jupyter table rendering component from `tts_html_utils`. Produces styled, color-coded, expandable tables for engineering data display. The primary output format for operations reports and Jupyter notebooks.
 _Avoid_: "HTML table," "formatted table," "display table"
 
+**SCET (Spacecraft Event Time)**:
+The UTC instant associated with a spacecraft event, as recorded by a ground station. SCET does not account for the signal travel time between the spacecraft and Earth — it is the timestamp at the spacecraft, expressed in UTC. The dominant time system for TTS telemetry frames. Stored as a string in ISOD format (`YYYY-DDDTHH:MM:SS.fff`) or ISOC format (`YYYY-MM-DDTHH:MM:SS.fff`). Conversion between SCET and other time systems is handled by `jpl_time`.
+_Avoid_: "event time," "spacecraft time," "UTC" (UTC is the scale; SCET is the context)
+
+**UTC (Coordinated Universal Time)**:
+The international civil time standard, kept in step with UT1 (Earth rotation) by the insertion of leap seconds. All JPL mission timestamps that are not mission-specific (SCLK, LMST) are ultimately anchored in UTC. Python's `datetime` is UTC-naive and does not account for leap seconds; use `jpl_time.Time` for leap-second-correct conversions.
+_Avoid_: "wall clock time," "calendar time"
+
+**TAI (International Atomic Time)**:
+A continuous atomic time scale with no leap seconds. TAI = UTC + N, where N is the current leap second count (37 seconds as of January 2017). Used internally by SPICE and `jpl_time` as the bridge between UTC and ET. `jpl_time.Duration` math is performed in TAI seconds to avoid leap-second discontinuities.
+_Avoid_: "atomic time," "TAI time" (redundant)
+
+**ET / TDB (Ephemeris Time / Temps Dynamique Barycentrique)**:
+A continuous time scale defined relative to the J2000 epoch (2000-01-01T12:00:00 UTC), measured in seconds. Used by SPICE as the universal internal representation. ET ≈ TAI + 32.184 s (TDT offset) plus a small periodic correction for the Earth's orbital eccentricity. All `jpl_time.Time` objects store their value as ET seconds; no SPICE kernel is needed for UTC/TAI/GPS↔ET conversions in jpl_time 2.0+.
+_Avoid_: "ephemeris seconds," "J2000 seconds" (informal but acceptable in context)
+
+**SCLK (Spacecraft Clock)**:
+The raw counter of the spacecraft's onboard oscillator, expressed as ticks since mission epoch. SCLK is the authoritative time reference for correlating onboard events to ground time. Converting SCLK to SCET/UTC requires a SPICE SCLK kernel; the conversion is not linear and drifts over time. SCLK is most relevant to anomaly investigation and precise event sequencing.
+_Avoid_: "spacecraft time," "clock ticks," "on-board time"
+
+**GPS Time**:
+The time system used by GPS satellites, defined as continuous seconds since 1980-01-06T00:00:00 UTC with no leap seconds. GPS time has a fixed offset from TAI (TAI − GPS = 19 s) and a varying offset from UTC. Supported by `jpl_time` without SPICE kernels.
+_Avoid_: "GPS clock," "GPS epoch seconds"
+
+**JD (Julian Date)**:
+A continuous count of days from noon January 1, 4713 BCE (proleptic Julian calendar). Used in astronomy and navigation. The J2000 epoch is JD 2451545.0. Supported by `jpl_time`.
+_Avoid_: "Julian day" (ambiguous — also refers to day-of-year)
+
+**LMST (Local Mean Solar Time)**:
+The mean solar time at the landed spacecraft's location on Mars, expressed as Sol number and time of day (e.g., `Sol-0025M12:00:00`). Derived from SCLK using a SPICE SCLK kernel and the spacecraft's landed position. Only relevant to Mars surface missions. Requires SPICE kernels via `jpl_time`.
+_Avoid_: "Mars time," "sol time," "local solar time" (ambiguous with LTST)
+
+**LTST / LST (Local True Solar Time)**:
+Like LMST but corrected for Mars's orbital eccentricity, giving the angle of the Sun in the sky rather than a mean-solar approximation. More physically meaningful than LMST for solar power or thermal analysis. Requires SPICE kernels (landed SPK + SCLK kernel).
+_Avoid_: "true solar time," "local time" (too generic)
+
+**ERT (Earth Received Time)**:
+The UTC time at which a downlinked signal from the spacecraft arrives at the ground station: `ERT = SCET + one-way light time`. Used in telemetry processing to correlate received packets to their transmission time. Requires a trajectory SPK kernel via `jpl_time`.
+_Avoid_: "receive time," "ground receive time"
+
+**ETT (Earth Transmitted Time)**:
+The UTC time at which an uplinked command was sent from Earth to arrive at the spacecraft at a given SCET: `ETT = SCET − one-way light time`. Used in command verification. Requires a trajectory SPK kernel via `jpl_time`.
+_Avoid_: "transmit time," "uplink time"
+
 **Dexter**:
 The TTS disposition and review workflow library (`tts_dexter`). Operators use Dexter to stamp individual data rows (via `TtsRowSeries`) as reviewed, acknowledged, or requiring action.
 _Avoid_: "review tool," "disposition tool"
@@ -107,11 +151,19 @@ Alongside the HTML artifact, commit a `.sha256` sidecar file that locks in the h
 
 Normalization: `check_inspection_hash` strips runtime-generated UUIDs before hashing so the digest is stable across runs even when components embed random IDs. Both `inspection_utils.py` and `certify.py` must use the same normalization function.
 
-**Certify script convention:** each repo with inspection tests should have `src/<package>/test/certify.py`. Running it (re)certifies all HTML artifacts in the repo's `test_files/` directory:
+**Certify script convention:** each repo with inspection tests must have `src/<package>/test/certify.py`. Running it with **no arguments** generates a self-contained HTML status dashboard (`test_files/inspection_status.html`) listing every artifact and its review state (UNCERTIFIED / STALE / CERTIFIED) with clickable links:
 
 ```
 python src/tts_data_utils/test/certify.py
 ```
+
+This is the **primary human entry point** — point reviewers here first so they can see at a glance what needs attention. After reviewing the linked artifacts, they stamp approval with:
+
+```
+python src/tts_data_utils/test/certify.py --certify
+```
+
+The `inspection_status.html` dashboard is a generated file (not committed). The `.sha256` sidecar files are committed and are the durable record of human review.
 
 **Example: PowerTable with sorting and filtering**
 ```python
