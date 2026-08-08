@@ -98,6 +98,31 @@ _Avoid_: "derivation engine," "calibration tool"
 
 ---
 
+## Agent Conventions
+
+These rules apply to AI agents operating in TTS repositories.
+
+### GitHub CLI: use body files for long posts
+
+When creating GitHub issues or PRs with multi-line bodies, **always write the body to a temporary file and pass it via `--body-file`**. Inline `--body` with long strings causes shell quoting failures that hang the terminal.
+
+```bash
+# Correct
+cat > /tmp/issue_body.md << 'EOF'
+## Summary
+...
+EOF
+gh issue create --title "My issue" --body-file /tmp/issue_body.md
+rm /tmp/issue_body.md
+
+# Wrong — long inline --body strings cause quoting hangs
+gh issue create --title "My issue" --body "## Summary\n..."
+```
+
+Always delete the body file immediately after a successful post.
+
+---
+
 ## Coding Standards
 
 These rules apply across all TTS repositories. They exist to maximize readability, extensibility, and compatibility. See `docs/philosophy.md` for the design principles behind them.
