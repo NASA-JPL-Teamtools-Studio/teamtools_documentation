@@ -96,18 +96,40 @@ Automated assertions are necessary but not sufficient. When a feature produces v
 - Add a `print()` statement in the test that outputs the absolute path to the artifact so it is easy to find in the test runner output.
 - Gitignore patterns must not exclude these files — they are part of the repo.
 
+**Hash-based human certification:**
+
+Alongside the HTML artifact, commit a `.sha256` sidecar file that locks in the human-approved rendering. The test then calls `check_inspection_hash(html_path)` at the end:
+
+- **First run** (no sidecar) → test **fails** with instructions to open the file, verify it, and run `certify.py`.
+- **Subsequent runs, no change** → hash matches → test **passes**.
+- **Output changes** (data, styling, or rendering code) → hash mismatch → test **fails** with instructions to re-inspect and re-certify.
+- **Only humans run** `certify.py` — never AI agents, never CI. The sidecar file is their stamp of approval.
+
+Normalization: `check_inspection_hash` strips runtime-generated UUIDs before hashing so the digest is stable across runs even when components embed random IDs. Both `inspection_utils.py` and `certify.py` must use the same normalization function.
+
+**Certify script convention:** each repo with inspection tests should have `src/<package>/test/certify.py`. Running it (re)certifies all HTML artifacts in the repo's `test_files/` directory:
+
+```
+python src/tts_data_utils/test/certify.py
+```
+
 **Example: PowerTable with sorting and filtering**
 ```python
-def test_write_inspection_html(self, styled_frame, tmp_path):
+from tts_data_utils.test.core.inspection_utils import check_inspection_hash
+
+_OUT = Path(__file__).parent / "test_files" / "my_feature_inspection.html"
+
+def test_write_inspection_html(self):
     from tts_html_utils.core.compiler import HtmlCompiler
-    compiler = HtmlCompiler("Inspection: StyledFrame PowerTable")
+    frame = MyFrame(MY_DATA, coerce=False, validate=False)
+    compiler = HtmlCompiler("My Feature Inspection")
     compiler.add_body_component(
-        styled_frame.power_table(add_sorting="local", add_filters="local")
+        frame.power_table(add_sorting="local", add_filters="local")
     )
-    out = Path("src/tts_data_utils/test/core/test_files/power_table_inspection.html")
-    compiler.render_to_file(out)
-    print(f"\nHuman-inspectable output: {out.resolve()}")
-    assert out.exists() and out.stat().st_size > 0
+    compiler.render_to_file(_OUT)
+    print(f"\nHuman-inspectable output: {_OUT.resolve()}")
+    assert _OUT.exists() and _OUT.stat().st_size > 0
+    check_inspection_hash(_OUT)   # fails until human certifies
 ```
 
 ### Python version support
