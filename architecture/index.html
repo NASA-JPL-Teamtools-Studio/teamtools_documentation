@@ -42,6 +42,18 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal current" href="#">Project Architecture</a>
 <ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#naming-conventions">Naming Conventions</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dependency-graph">Dependency Graph</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#uplink-chain">Uplink Chain</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#downlink-web">Downlink Web</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#towers-four-class-model">Tower's Four-Class Model</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#open-design-gaps">Open Design Gaps</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -149,27 +161,34 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="architecture">Architecture</h1>
-<p>This page shows a high-level heirarchy of the interdependencies of all TTS libraries, including the DemoSat adaptation layer.
-It is not meant to strictly match the pip resolution of all packages. For example, TTS Utilities is required by every TTS library
-(it's where our shared logger lives) but it is only illustrated as flowing to its direct children. Any node in this diagram
-may depend on any of those in the flow of the heirarchy above it. Some depenencies are not illustrated because the diagram gets too
-messy as more and more are added. Illustrating the general inheritance strategy is more important here than creating an image that
-is exhaustively correct.</p>
+<p>This page describes the structure of TTS libraries, how they relate to each other, and how data moves through them at runtime. The dependency graph shows library relationships; the operational flow sections describe runtime data movement.</p>
+<h2 id="naming-conventions">Naming Conventions</h2>
+<p>All TTS repositories follow a consistent naming pattern:</p>
+<ul>
+<li><strong><code>tts_*</code></strong> — core library. No mission-specific code. Provides abstract base classes and multimission implementations that any project can extend.</li>
+<li><strong><code>[mission]_*</code></strong> — mission adaptation. Extends one or more <code>tts_*</code> cores for a specific project. Depends on TTS core; never modifies it.</li>
+<li><strong><code>[mission]_seqdb</code></strong> — a special case: not a Python package. A Git repository template for strict configuration management of flight sequence files. See the Uplink Chain section below.</li>
+</ul>
+<p>The <code>demosat_*</code> group (<code>NASA-JPL-TTS-Demosat</code>) is the canonical reference implementation — a fictional satellite demonstrating a complete end-to-end TTS adaptation. Start with DemoSat when learning how to adapt any TTS library for a new mission.</p>
+<h2 id="dependency-graph">Dependency Graph</h2>
+<p>Not every dependency is shown — <code>tts_utilities</code> is required by every library, but only its direct dependents are illustrated. The intent is to convey the general inheritance and dependency strategy, not exhaustive pip resolution.</p>
 <div class="mermaid">graph TD;
-    %% Main Logic
+    %% Core
     A[TTS Utilities] --&gt; C[HTML Utilities];
     A --&gt; D[TTS Dictionary Interface];
     D --&gt; B[TTS Seq];
     A --&gt; E[FRESH];
     C --&gt; F[Papertrail];
+    C --&gt; V[TTS DTAT];
     F --&gt; G[Data Utils];
-    G --&gt; H[Dexter]
-    G --&gt; I[Dante]
+    G --&gt; H[Dexter];
+    G --&gt; I[Dante];
+    G --&gt; U[TTS Events];
     E --&gt; J[DemoSat FRESH];
     F --&gt; K[Tower];
     H --&gt; L[DemoSat Dexter];
     I --&gt; M[DemoSat Dante];
-    K --&gt; N[DemoSat Tower]; 
+    K --&gt; N[DemoSat Tower];
     D --&gt; O[DemoSat Dictionary Interface];
     G --&gt; P[DemoSat Data Utils];
     B --&gt; Q[DemoSat Seq];
@@ -185,14 +204,114 @@ is exhaustively correct.</p>
     Q --&gt; J;
     J --&gt; N;
 
-    %% Utility Nodes (Clean &amp; Professional)
+    %% Utility Nodes
     classDef utility fill:#f8f9fb,stroke:#2980b9,stroke-width:1px,color:#333;
-    class A,B,C,D,E,F,G,H,I,K,R,S utility;
+    class A,B,C,D,E,F,G,H,I,K,R,S,U,V utility;
 
-    %% NASA Blue for DemoSat Nodes (The "Bottom Line")
+    %% NASA Blue for DemoSat Nodes
     classDef demosat fill:#0032A0,stroke:#001d5e,stroke-width:2px,color:#fff,font-weight:bold;
     class J,L,M,N,O,P,Q,T demosat;
 </div>
+<h2 id="uplink-chain">Uplink Chain</h2>
+<p>The uplink chain begins with activity planning and ends with sequences authorized for upload to the spacecraft. Tower and FRESH may run in parallel during CI; dictionary lookups are used by multiple steps simultaneously.</p>
+<div class="mermaid">flowchart LR
+    Plan["[mission]_plan\nactivities · claimables\nscheduler"]
+    Seq["[mission]_seq\nSeqDict · SeqCollection\nseq authoring · simulation"]
+    DI["[mission]_dictionary_interface\ncommand · channel · rule metadata"]
+    SeqDB["[mission]_seqdb\nGit CM: tagged commits\nmulti-team approval · CI"]
+    Fresh["[mission]_fresh\npre-uplink flight\nrule checking"]
+    Tower["[mission]_tower\nrule collation\n+ checking"]
+    SC["Spacecraft\nuplink"]
+
+    Plan --&gt;|activities| Seq
+    DI --&gt;|command metadata| Seq
+    DI --&gt;|command metadata| Fresh
+    Seq --&gt;|sequence files| SeqDB
+    SeqDB --&gt;|CI| Fresh
+    SeqDB --&gt;|CI| Tower
+    SeqDB --&gt;|approved| SC
+</div>
+<p><strong>Key concepts:</strong></p>
+<ul>
+<li><strong><code>[mission]_plan</code></strong> — defines mission-specific <code>Activity</code> subclasses with start/stop times and resource claims. The scheduler is entirely mission-side; <code>tts_plan</code> provides abstract activity and claim types.</li>
+<li><strong><code>[mission]_seq</code></strong> — authors and parses sequences. <code>SeqDict</code> represents one sequence file. <code>SeqCollection</code> is a graph of sequences linked by calling relationships (e.g., <code>RUN_SEQ</code>). The <code>CALLING_COMMANDS</code> class variable declares which command stems spawn sub-sequences and which argument carries the child ID. <code>SeqCollection</code> powers call tree reports and broken-link detection. Mission-specific sequence classes also carry metadata fields such as <code>on_board_path</code> (intended onboard destination) and <code>deletion_intent</code> (mark for removal during the next uplink load).</li>
+<li><strong><code>[mission]_seqdb</code></strong> — a Git repository (not a Python package). Enforces: tagged commit before any PR can merge; multi-team approval gates (ops, mission assurance, management); and automated CI validation (FRESH, Tower, call tree reports, metadata diffs). The merged tagged commit is the authorized source of truth for what sequences are onboard.</li>
+<li><strong>Tower</strong> can collate results from external tools via input clients, check rules directly in checkers, or do both simultaneously. All modes are valid depending on mission context.</li>
+<li><strong>FRESH</strong> checks per-sequence flight rules. Rules are Python functions/classes organized into modules by category (argument rules, existence rules, timing rules, etc.).</li>
+</ul>
+<h2 id="downlink-web">Downlink Web</h2>
+<p>The downlink side is a web, not a pipeline — tools can run independently, in any combination, and results feed into each other non-linearly.</p>
+<div class="mermaid">flowchart LR
+    TLM["Spacecraft\ntelemetry"]
+    Q["[mission]_query\n(planned pattern;\nCSV/Parquet today)"]
+    DU["[mission]_data_utils\nTtsDataFrame subclasses"]
+    Dante["[mission]_dante\nchannel derivation"]
+    Events["tts_events /\n[mission]_events\nevent detection"]
+    Dexter["[mission]_dexter\ndisposition"]
+    HTML["tts_html_utils\ntts_dtat"]
+    PT["tts_papertrail\npublishing"]
+    Human["Human overlay\n(open design gap)"]
+
+    TLM --&gt; Q
+    Q --&gt; DU
+    DU --&gt; Dante
+    DU --&gt; Events
+    DU --&gt; Dexter
+    Dante --&gt; Dexter
+    Events -.-&gt;|not yet connected| Dexter
+    Dexter --&gt; HTML
+    HTML --&gt; PT
+    Human -.-&gt;|workflow unsolved| PT
+</div>
+<p><strong>Key concepts:</strong></p>
+<ul>
+<li><strong><code>[mission]_query</code></strong> (a naming convention for a not-yet-standardized layer) — reads raw telemetry from files or databases and returns typed <code>TtsDataFrame</code> subclasses. No analysis logic lives here. Currently a CSV/Parquet placeholder in DemoSat; TimeScaleDB is the planned optional backend.</li>
+<li><strong><code>[mission]_data_utils</code></strong> — defines mission-specific <code>TtsDataFrame</code> subclasses (EHA, EVRs, comm windows, orbit events, etc.). Does not do I/O.</li>
+<li><strong><code>[mission]_dante</code></strong> — derives new channels from existing telemetry using the expression engine in <code>tts_data_utils</code>.</li>
+<li><strong><code>tts_events</code></strong> / <strong><code>[mission]_events</code></strong> — detects time periods of interest from telemetry by rule-based detection. Distinct from EVRs (discrete log records). Not yet connected to Dexter as a disposition input — a filed roadmap item.</li>
+<li><strong><code>[mission]_dexter</code></strong> — dispositions data items using auto-disposition rule tables and human overlay. Human overlay workflow is an open design gap.</li>
+<li><strong><code>tts_papertrail</code></strong> — publishes completed reports to external destinations (Confluence, Cacher, Excel, etc.).</li>
+</ul>
+<h2 id="towers-four-class-model">Tower's Four-Class Model</h2>
+<p>Every Tower mission implementation is built from four concepts:</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input client</strong></td>
+<td>Translates an external tool's output (any format) into Tower's internal representation. Can depend on other input clients.</td>
+</tr>
+<tr>
+<td><strong>Checker</strong></td>
+<td>Evaluates flight rules against input clients; stamps dispositions onto rule results.</td>
+</tr>
+<tr>
+<td><strong>Rule result</strong></td>
+<td>One rule from the flight rule dictionary with its accumulated dispositions. Overall status = most severe disposition.</td>
+</tr>
+<tr>
+<td><strong>Disposition</strong></td>
+<td>Result of one atomic check: <code>PASSED</code>, <code>FLAGGED</code>, <code>VIOLATED</code>, or <code>INFO_ONLY</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>All checkers and input clients run in an invulnerable pipeline — a failure in one does not halt the others. A failed client is replaced with a dummy that allows downstream checkers to run, and the failure is surfaced in the report.</p>
+<h2 id="open-design-gaps">Open Design Gaps</h2>
+<p>The following architectural gaps are known and have filed design tickets:</p>
+<ul>
+<li><strong>Flight rule dictionary standardization</strong> — no standard cross-mission format yet. (<code>tts_tower</code>)</li>
+<li><strong>SeqDB CI + Tower state persistence</strong> — no standard mechanism for persisting Tower state or human overlay between CI runs. (<code>demosat_seqdb</code>)</li>
+<li><strong>Query layer standard</strong> — no standardized <code>[mission]_query</code> pattern or backend contract. (<code>demosat_data_utils</code>)</li>
+<li><strong>Events → Dexter integration</strong> — <code>tts_events</code> output not yet connected to <code>tts_dexter</code> as a disposition input or context source. (<code>tts_dexter</code>)</li>
+<li><strong>Human overlay workflow</strong> — no resolved workflow for operators to submit human dispositions on top of computer-generated outputs. (<code>tts_ci_cd</code>, <code>tts_papertrail</code>)</li>
+<li><strong>FRESH dictionary modernization</strong> — FRESH uses legacy dictionary access code not yet migrated to <code>tts_dictionary_interface</code>. (<code>tts_fresh</code>)</li>
+<li><strong>SemanticDictionary node caching</strong> — dictionary nodes rebuilt on every access; no session-level cache. (<code>tts_dictionary_interface</code>)</li>
+</ul>
 <hr/>
 <p><a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/architecture.md" rel="noopener noreferrer" target="_blank">Edit/Comment on GitHub</a></p>
 </div>
