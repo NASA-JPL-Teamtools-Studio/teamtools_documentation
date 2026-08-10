@@ -96,6 +96,42 @@ _Avoid_: "review tool," "disposition tool"
 The TTS channel derivation library (`tts_dante`). Applies calibration formulas and mathematical transformations to time-series `TtsDataFrame` columns to produce derived channels. Depends on the expression engine in `tts_data_utils`.
 _Avoid_: "derivation engine," "calibration tool"
 
+**Activity**:
+A planned unit of spacecraft work defined in `[mission]_plan`. An activity has a start time, stop time, resource budgets, and resource claims. Activities are the uplink-chain analog of Events — they represent what was *intended*, not what occurred. The mission-specific `[mission]_plan` adaptation defines the concrete activity types and the scheduler that builds the plan.
+_Avoid_: "event" (reserved for downlink-discovered occurrences), "task," "command"
+
+**Event** (`tts_events`):
+A time period of interest discovered from downlinked spacecraft telemetry by rule-based detection, implemented in `tts_events` and `[mission]_events`. Events represent what *actually occurred* during a pass or observation window. Distinct from EVRs (discrete timestamped log records) and from Activities (uplink-planned intentions). The `discover_events()` method is the override point for mission-specific detection logic.
+_Avoid_: "EVR," "activity," "alarm," "log event"
+
+**SeqDict**:
+A pythonic representation of a single spacecraft sequence file (dotseq, SeqJSON, SeqN, etc.), defined in `tts_seq` and subclassed per mission in `[mission]_seq`. Carries sequence content plus metadata fields (e.g., `on_board_name`, `on_board_path`, `deletion_intent`). One `SeqDict` instance = one file that may live on the spacecraft.
+_Avoid_: "sequence object," "sequence file wrapper"
+
+**SeqCollection**:
+A collection of `SeqDict` objects that can be linked by their calling relationships. The `CALLING_COMMANDS` class variable declares which command stems spawn sub-sequences (e.g., `RUN_SEQ`) and which argument contains the child sequence ID. `SeqCollection` resolves the full call tree, detects broken links, and powers call tree reports. Used by FRESH, Tower CI jobs, and sequence validation scripts.
+_Avoid_: "sequence set," "sequence database" (that's SeqDB)
+
+**SeqDB** (`[mission]_seqdb`):
+A Git repository template for strict configuration management of flight sequence files. Not a Python package. Enforces tagged-commit PR gating, multi-team approval workflows (ops / mission assurance / management), and automated CI validation (FRESH, Tower, metadata reports) via GitHub Actions. The merged tagged commit is the authoritative record of what sequences are currently approved for uplink.
+_Avoid_: "sequence database," "sequence library"
+
+**Flight rule**:
+A documented spacecraft operating constraint, uniquely identified and organized into a flight rule dictionary. Flight rules have criticality levels (A = safety-critical, B = mission-critical, C = mission-significant, I = informational). They are evaluated as binary pass/fail after full context is available. A `FLAGGED` state indicates the rule needs human review. Rules can be checked in FRESH (per-sequence, pre-uplink) or in Tower (across all inputs, at planning time), or both.
+_Avoid_: "constraint," "check," "rule check"
+
+**Input client** (Tower):
+An adapter class in `tts_tower` and `[mission]_tower` that translates an external tool's output (any format: sequence file, simulation result, planning file, JSON) into Tower's internal data representation. Input clients can depend on other input clients. The adapter pattern is the entire point — there is no standard external format.
+_Avoid_: "data loader," "Tower input"
+
+**Disposition** (Tower / Dexter):
+The result of one atomic check of a rule or data item: `PASSED`, `FLAGGED`, `VIOLATED`, or `INFO_ONLY`. A rule result's overall status is the rollup of all its dispositions — the most severe wins. In Dexter, dispositions are stamped onto individual `TtsDataFrame` rows via `TtsRowSeries.stamp()`.
+_Avoid_: "status," "result," "verdict"
+
+**Claim** (`[mission]_plan`):
+A resource reservation attached to an Activity. An `EXCLUSIVE` claim prevents any other activity from using the same resource at the same time. An `AVOIDANCE` claim marks a time window where a resource should not be used — typically enforced downstream by a Tower flight rule check.
+_Avoid_: "lock," "reservation," "resource hold"
+
 ---
 
 ## Agent Conventions
