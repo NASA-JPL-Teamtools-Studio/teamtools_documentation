@@ -28,6 +28,10 @@ _Avoid_: "data loader," "reader," "ingester"
 The per-mission library of `TtsDataFrame` subclasses for that mission's data types (e.g., `oco2_data_utils`). Contains schema definitions, domain methods, and display logic. Does not do I/O.
 _Avoid_: "data layer," "models"
 
+**Dictionary interface** (`{mission}_dictionary_interface`):
+The mission adaptation of `tts_dictionary_interface`. Provides `SemanticDictionary` subclasses that wrap `{mission}_dict` XML files (Channel.xml, Evr.xml, Command.xml, etc.) as structured Python objects. Pure XML parsing — no mission-specific business logic, alias tables, or pipeline utilities live here.
+_Avoid_: "dictionary loader," "XML reader," "dictionary parser"
+
 **Ground system**:
 The command-and-control software suite used to operate a spacecraft (e.g., AMPCS, MGSS, FPrime, YAMCS). Ground-system-specific data types (like EHA and EVR formats) are grouped by ground system within `tts_data_utils/multimission/`.
 _Avoid_: "ground software," "GSW" (too broad)
@@ -137,6 +141,14 @@ _Avoid_: "lock," "reservation," "resource hold"
 ## Agent Conventions
 
 These rules apply to AI agents operating in TTS repositories.
+
+### Cite sources in glossaries and CONTEXT files
+
+When adding any term, fact, or definition to a `CONTEXT.md`, glossary, or `AGENTS.md` file, include a parenthetical citation immediately after the claim:
+- Document reference: `(D-107907 §9.4.1)` or `(JPL D-107904 Rev A)`
+- Person + date: `(Matt Muszynski, 2026-08-10)`
+
+Never add undocumented claims without stating they are inferred. If a fact cannot be sourced, explicitly mark it as `(inferred — not confirmed)` and file a grilling ticket. This rule applies to all TTS repos, porkchop, and mission documentation.
 
 ### GitHub CLI: use body files for long posts
 
