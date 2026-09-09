@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/agents/agent-files-alignment-spec/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Spec: Align Agent Files Across the TTS Workspace - Teamtools Studio Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Spec: Align Agent Files Across the TTS Workspace";
+        var mkdocs_page_input_path = "agents/agent-files-alignment-spec.md";
+        var mkdocs_page_url = "/studio/teamtools_documentation/agents/agent-files-alignment-spec/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Teamtools Studio Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../architecture/">Project Architecture</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../philosophy/">Design Philosophy</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Repositories</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dante/">Dante</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_data_utils/">Data Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dexter/">Dexter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dtat/">DTAT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_fresh/">FRESH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_html_utils/">HTML Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_papertrail/">Papertrail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_tower/">TOWER</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dictionary_interface/">TTS Dictionary Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_plan/">TTS Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_seq/">TTS Seq</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_starter_template/">TTS Starter Tempalte</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_spice/">TTS Spice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_utilities/">TTS Utilities</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Collaboration</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/collaboration/">Start here</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/fudamental_concepts/">Fundamental Concepts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/install/">Initial installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/cookbooks/">Cookbooks and Demos</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/style_primer/">Style Primer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Styles, Norms, and Best Practices</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../collaboration/day_zero_design/">First Time Setup for New Projects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../collaboration/styles_et_al/">Coding Style</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/documentation/">Documentation Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/verification_and_validation/">Verification and Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/testing/">Testing Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/ci_cd_policy/">CI/CD Policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/releases/">Releases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/roadmap/">Roadmap</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/governance/">Governance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/licence/">Licensing</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference Project</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/demosat_description/">DemoSat Reference Project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/demosat_libraries/">DemoSat Adaptation Libraries</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/fprime/">DemoSat F-Prime Build</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Teamtools Studio Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Spec: Align Agent Files Across the TTS Workspace</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="spec-align-agent-files-across-the-tts-workspace">Spec: Align Agent Files Across the TTS Workspace</h1>
+<blockquote>
+<p><strong>Status:</strong> Draft (session deliverable, doc-only — alignment is <em>not</em> executed in this session)
+<strong>Canonical tracked spec:</strong> https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/issues/63</p>
+<p>This file is the <strong>living detail / phased work breakdown</strong> (Phases 0–5); the issue
+above is the canonical, reviewable spec. Keep them in sync.
+<strong>Owner:</strong> Teamtools Studio developer tooling
+<strong>Last decided:</strong> See §3 Decisions.
+<strong>Follows from:</strong> <code>setup-matt-pocock-skills</code> skill (<code>~/.agents/skills/setup-matt-pocock-skills</code>), ADR <code>tts_core/tts_ci_cd/docs/adr/001-ai-skill-infrastructure.md</code>.</p>
+</blockquote>
+<h2 id="1-goal">1. Goal</h2>
+<p>Each engineering skill (<code>to-tickets</code>, <code>triage</code>, <code>to-spec</code>, <code>wayfinder</code>, <code>git_hygiene</code>, …) needs a repo to answer three questions:
+1. <strong>Where do issues live?</strong> (issue tracker + <code>gh</code> host/flags)
+2. <strong>What does this repo <em>mean</em>?</strong> (domain context; what it adapts upstream)
+3. <strong>What are the conventions?</strong> (triage labels, ADR reading rules, skill onboarding)</p>
+<p>Today that config is <strong>duplicated per repo</strong> as <code>docs/agents/{issue-tracker,domain,triage-labels}.md</code> + a <code>## Agent skills</code> block in each repo's <code>AGENTS.md</code>/<code>CLAUDE.md</code>. That drift is unmanageable across <strong>94 repos</strong>.</p>
+<p><strong>This spec</strong> replaces 90 near-identical copies with: one set of <strong>central convention docs</strong> in <code>teamtools_documentation</code>, and a <strong>thin pointer file</strong> (<code>docs/agents/README.md</code>) in every repo that only carries <em>per-repo instance data</em>.</p>
+<h2 id="2-current-state-verified">2. Current state (verified)</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Count</th>
+<th>Repos (examples)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fully configured (full per-repo <code>docs/agents/</code> + <code>## Agent skills</code> block)</td>
+<td>4</td>
+<td><code>oco2/oco2_tower</code>, <code>oxus/oxus_telemetry_store</code>, <code>tts_core/tts_data_utils</code>, <code>tts_core/tts_tower</code></td>
+</tr>
+<tr>
+<td>Empty placeholder <code>docs/agents/</code></td>
+<td>1</td>
+<td><code>tts_core/teamtools_documentation</code></td>
+</tr>
+<tr>
+<td>Has <code>AGENTS.md</code>/<code>CLAUSE.md</code> but <strong>no</strong> agent-skills block</td>
+<td>6</td>
+<td><code>demosat/demosat_documentation</code>, <code>fss/fss_documentation</code>, <code>oco2/oco2_documentation</code>, <code>tts_core/tts_ci_cd</code>, <code>work_tracking/porkchop</code>, <code>work_tracking/resume</code></td>
+</tr>
+<tr>
+<td>Nothing yet</td>
+<td>83</td>
+<td>all the rest</td>
+</tr>
+<tr>
+<td>Total git repos in workspace</td>
+<td><strong>94</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Ownership is mixed but follows a naming invariant (see §5): canonical orgs on <code>github.com</code> (<code>NASA-JPL-Teamtools-Studio</code>, <code>NASA-JPL-TTS-Demosat</code>), mature-but-internal orgs on <code>github.jpl.nasa.gov</code>, personal sandbox forks under <code>muszynsk</code> on JPL GHE, and 6 repos with <strong>no <code>origin</code> locally</strong> (<code>demosat_dtat</code>, <code>oco3/{oco3_dict,oco3_dictionary_interface}</code>, <code>oxus/{oxus_dict,oxus_dtat,oxus_events}</code>) that nevertheless exist on <code>github.jpl.nasa.gov</code>.</p>
+<h2 id="3-decisions">3. Decisions</h2>
+<ul>
+<li><strong>D1 — Centralize, don't replicate.</strong> Conventions live once in <code>teamtools_documentation</code>; each repo holds only a pointer + its instance data. <em>(Replaces the idea of running <code>setup-matt-pocock-skills</code> in all 94 repos.)</em></li>
+<li><strong>D2 — Convert the 4 done repos.</strong> Fold their per-repo <code>docs/agents/*</code> into the central doc set and replace with the thin pointer, for uniformity.</li>
+<li><strong>D3 — Pointer file = <code>docs/agents/README.md</code></strong> in each repo. (Matches the <code>docs/agents/</code> location <code>setup-matt-pocock-skills</code> already looks for, and doesn't clobber existing <code>AGENTS.md</code>/<code>CLAUDE.md</code>.)</li>
+<li><strong>D4 — Central doc set</strong> holds: skill onboarding + triage vocabulary, the repo+mission map, the dependency→consumer (<code>Adapts …</code>) map <strong>(reused from <code>WORKSPACE_MAP.md</code>, not duplicated)</strong>, shared <em>deterministic</em> domain glossary, issue-tracker templates (GitHub Enterprise / <code>github.com</code> / local-markdown), and a root-<code>AGENTS.md</code> replacement for this workspace.</li>
+<li><strong>D5 — Per-repo pointer carries exactly 5 instance fields</strong> (see §4): issue tracker, upstream <code>Adapts:</code> target, triage-label overrides, link to the repo's own <code>CONTEXT.md</code> (repo-specific domain language), and an ownership-category tag.</li>
+<li><strong>D6 — Capture rule (hard constraint).</strong> A repo is in-scope iff its name matches <code>tts_[lib]</code> <em>or</em> <code>[mission]_[lib]</code> where <code>[lib]</code> is a libname that <strong>also exists as <code>tts_[lib]</code></strong>. Non-TTS pulls (<code>mro_sci</code>, <code>mech_data_tools</code>, <code>work_tracking/resume</code>, <code>venvs</code>, <code>sandboxes</code>, <code>tmp</code>, …) are <strong>ephemeral and never referenced</strong> by the pointer program or the central map.</li>
+<li><strong>D7 — No origin? Assume <code>muszynsk</code> on JPL GHE; create the remote if it does not exist.</strong> (Future automation / human step — see §7.)</li>
+<li><strong>D8 — Doc-only this session.</strong> This spec is the deliverable; the alignment itself ships as future tickets (§6).</li>
+</ul>
+<h2 id="4-the-per-repo-pointer-file-docsagentsreadmemd">4. The per-repo pointer file: <code>docs/agents/README.md</code></h2>
+<p>Tiny, structured, machine-ish. Fields:</p>
+<pre><code class="language-markdown"># Agent skills
+
+Canonical engineering-skill conventions and the cross-repo dependency map live in
+`tts_core/teamtools_documentation/docs/agents/`. This repo holds only the
+per-repo instance data a skill needs locally.
+
+- **Issue tracker:** GitHub Issues at `github.jpl.nasa.gov/Oxus-teamtools/oxus_telemetry_store`
+  (host `github.jpl.nasa.gov`, `-R Oxus-teamtools/oxus_telemetry_store`).
+  *If a skill needs more, see `teamtools_documentation/docs/agents/issue-tracker-github-ghe.md`.*
+- **Adapts:** `tts_core/tts_telemetry_store`  ← into the central repo map / WORKSPACE_MAP.md
+- **Triage labels:** default vocabulary (see `teamtools_documentation/docs/agents/triage-labels.md`)
+- **Domain context:** repo-specific domain language is in this repo's `CONTEXT.md`.
+- **Ownership:** sandbox  ← one of: public | jpl-internal | sandbox | no-origin
+</code></pre>
+<blockquote>
+<p>Concrete example above is from <code>oxus/oxus_telemetry_store</code> (its <code>CONTEXT.md</code>-level domain language stays local; host/org/labels are instance data). <code>teamtools_documentation</code> itself is <strong>source of truth</strong> and carries no self-pointer (or a one-liner saying so).</p>
+</blockquote>
+<p>The 4 legacy repos are converted by (a) folding their specific issue-tracker URL / <code>Adapts</code> / label overrides into this template, (b) deleting the now-redundant <code>docs/agents/{issue-tracker,domain,triage-labels}.md</code>, (c) dropping the <code>## Agent skills</code> block from <code>AGENTS.md</code> (the pointer file supersedes it).</p>
+<h2 id="5-capture-rule-applied">5. Capture rule (applied)</h2>
+<p>In-scope pattern: <code>tts_[lib]</code> or <code>[mission]_[lib]</code> where <code>tts_[lib]</code> also exists in this workspace.</p>
+<ul>
+<li>Core <code>tts_[lib]</code> libs anchor the set (e.g. <code>tts_seq</code> ⇒ <code>fss_seq</code>, <code>nisar_seq</code>, … are in-scope; <code>tts_data_utils</code> ⇒ every <code>*_data_utils</code> mission adaptation is in-scope).</li>
+<li>A <code>[mission]_[lib]</code> with <strong>no</strong> matching <code>tts_[lib]</code> is <strong>out of scope</strong> (e.g. <code>mro_sci</code> — "sci" is not a TTS lib).</li>
+<li><strong>Excluded entirely</strong> (ephemeral, non-TTS, never referenced): <code>mro/mro_sci</code>, <code>m20/mech_data_tools</code>, <code>work_tracking/resume</code>, and anything under <code>venv/</code>, <code>tmp/</code>, <code>sandboxes/</code>, <code>SunRISE/</code>.</li>
+</ul>
+<p>The exact in-scope list is the <strong>output of a script</strong> run at implementation time (the remote-org + <code>git remote</code> + WORKSPACE_MAP cross-check). This spec does not hard-code 90 names — that list drifts; the rule doesn't.</p>
+<h2 id="6-implementation-steps-ticketable-phased">6. Implementation steps (ticketable, phased)</h2>
+<p>Each bullet under a phase = one ticket (or one PR). None executed in this session.</p>
+<p><strong>Phase 0 — Meta (this spec)</strong>
+- [ ] <code>tts_core/teamtools_documentation</code>: add this spec at <code>docs/agents/agent-files-alignment-spec.md</code>.</p>
+<p><strong>Phase 1 — Central doc set</strong>
+- [ ] Create <code>tts_core/teamtools_documentation/docs/agents/</code> seed set: <code>README.md</code> (index), <code>skill-conventions.md</code> (onboarding + triage vocab), <code>repo-map.md</code> (missions + ownership categories), <code>domain-glossary.md</code> (shared deterministic terms), <code>issue-tracker-github-ghe.md</code>, <code>issue-tracker-github-com.md</code>, <code>issue-tracker-local.md</code> (reuse the <code>setup-matt-pocock-skills</code> seed templates as starting points).
+- [ ] Assert <code>WORKSPACE_MAP.md</code> as the authoritative dependency→consumer map (link, don't copy).</p>
+<p><strong>Phase 2 — Pointer injector (the script)</strong>
+- [ ] <code>tts_core/tts_ci_cd</code> (or <code>tts_genai_utils</code>): add <code>tts-write-agent-pointer</code> command. Behavior:
+  - enumerate in-scope repos per §5 (name pattern + <code>tts_[lib]</code> existence);
+  - for each: resolve issue tracker from <code>git remote -v</code> (fallback <code>github.jpl.nasa.gov/muszynsk/&lt;repo&gt;</code> + <code>gh</code> lookup when no <code>origin</code>), <code>Adapts:</code> target from <code>WORKSPACE_MAP.md</code>, ownership category from remote org;
+  - write <code>docs/agents/README.md</code> (template §4); convert the 4 legacy repos (fold + delete + drop <code>## Agent skills</code> block);
+  - idempotent: re-running updates, doesn't duplicate.
+- [ ] Wire it so <code>setup-matt-pocock-skills</code> (or this command) is the documented path to onboard a new/existing repo.</p>
+<p><strong>Phase 3 — Workspace root <code>AGENTS.md</code> upgrade</strong>
+- [ ] Append an "Agent skills" section to the workspace-root <code>AGENTS.md</code> pointing to <code>teamtools_documentation/docs/agents/</code> + the capture rule, <strong>correcting</strong> the stale top-level directory list (missing <code>eurc</code>, <code>fss</code>, <code>m20</code>, <code>oco3</code>, <code>oxus</code>, <code>srl</code>, <code>SunRISE</code>, <code>work_tracking</code>; <code>tts_ci_cd</code> is under <code>tts_core/</code>).</p>
+<p><strong>Phase 4 — 6 no-origin repos</strong> <em>(depends: gh API access / human)</em>
+- [ ] For <code>demosat_dtat</code>, <code>oco3_dict</code>, <code>oco3_dictionary_interface</code>, <code>oxus_dict</code>, <code>oxus_dtat</code>, <code>oxus_events</code>: set <code>origin</code> to <code>git@github.jpl.nasa.gov:muszynsk/&lt;repo&gt;.git</code>; create the remote on JPL GHE if it does not exist. The pointer file notes the <code>gh</code> lookup fallback in the meantime.</p>
+<p><strong>Phase 5 — Verify</strong>
+- [ ] Spot-check agent skill runs (<code>to-tickets</code>, <code>wayfinder</code>) in 2 core + 2 mission repos using only the pointer file.
+- [ ] Confirm the 4 legacy conversions didn't lose their specific tracker/upstream config.</p>
+<h2 id="7-future-open">7. Future / open</h2>
+<ul>
+<li><strong><code>make the remote</code> step (§6-Phase 4):</strong> creating a GitHub remote on JPL GHE is not a local-filesystem op — needs <code>gh</code> API or a human. Tracked as a ticket; do not block the pointer rollout (the <code>gh</code>-lookup fallback covers it).</li>
+<li><strong>Domain glossary:</strong> lazy. Don't backfill shared terms now; <code>/domain-modeling</code> (<code>/grill-with-docs</code>) creates them as conflicts/gaps surface (per the <code>setup-matt-pocock-skills</code> <code>domain.md</code> seed: "proceed silently" if <code>CONTEXT.md</code> is absent).</li>
+<li><strong>Symlink alternative:</strong> rejected — fragile across <code>gh</code>/CI workflows; a real file is more robust.</li>
+<li><strong><code>setup-matt-pocock-skills</code> itself:</strong> becomes the <em>human-in-the-loop</em> onboarding skill; the pointer injector is the <em>bulk</em> path. Keep both.</li>
+</ul>
+<h2 id="8-non-goals-this-session">8. Non-goals (this session)</h2>
+<ul>
+<li>No <code>git remote</code> changes to the 6 no-origin repos.</li>
+<li>No <code>docs/agents/README.md</code> written into any repo.</li>
+<li>No <code>AGENTS.md</code>/<code>CLAUDE.md</code> edits beyond this spec doc.</li>
+<li>No execution of <code>setup-matt-pocock-skills</code> or the pointer injector.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

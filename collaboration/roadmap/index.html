@@ -126,6 +126,22 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#open-sourced">Open Sourced</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#agent-written-spec-backlog-slow-burn">Agent-Written Spec Backlog (slow burn)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#grab-next">Grab next</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#track-1-tts_dictionary_interface-f-prime-dictionary-support-prioritized-track">Track 1 — tts_dictionary_interface: F-Prime dictionary support (prioritized track)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#track-2-demosat-evolution-independent-of-track-1">Track 2 — DemoSat Evolution (independent of Track 1)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#needs-review">Needs review</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#other-open-tts_core-work-not-yet-triaged-into-a-track">Other open tts_core work (not yet triaged into a track)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#housekeeping-done-2026-08-19">Housekeeping done 2026-08-19</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../governance/">Governance</a>
@@ -190,6 +206,84 @@
 <h2 id="open-sourced">Open Sourced</h2>
 <ul>
 <li>Code is open sourced</li>
+</ul>
+<hr />
+<h2 id="agent-written-spec-backlog-slow-burn">Agent-Written Spec Backlog (slow burn)</h2>
+<p>Inventory of open, agent-written specs/tickets across <code>demosat_*</code> and <code>tts_core</code> repos, prioritized for a
+one-spec-per-week slow burn (porkchop #90). No dates — this is a queue, not a schedule. Re-derive priority
+whenever a new idea shows up and needs to be weighed against what's already queued.</p>
+<p><strong>Ranking rule (settled 2026-08-19)</strong>: an item with an open branch or other unmerged work outranks an item
+that only has a <code>ready-for-agent</code> ticket with no code behind it yet. Ties/gaps get flagged for discussion
+rather than silently ranked.</p>
+<h3 id="grab-next">Grab next</h3>
+<ul>
+<li><strong><code>tts_dictionary_interface</code> F-Prime chain, starting with <code>#17</code></strong> — see Track 1 below. With the
+  <code>tts_dexter</code> df-compat branch now moved to a PR (see Housekeeping), this is the top of the queue.</li>
+</ul>
+<h3 id="track-1-tts_dictionary_interface-f-prime-dictionary-support-prioritized-track">Track 1 — <code>tts_dictionary_interface</code>: F-Prime dictionary support (prioritized track)</h3>
+<p>Chain, in order: <code>#17</code> (XmlDictionary/AmpcsDictionary base, deprecate SemanticDictionary) →
+<code>#18</code> (shared dictionary-item contract + lazy lookup-order fix) → <code>#19</code> (F-Prime JSON dictionary engine) →
+<code>#20</code> (cross-engine contract-parity test suite, DemoSat fixture). All labeled <code>ready-for-agent</code>; none have
+an open branch yet. This chain <strong>supersedes</strong> the old DemoSat-roadmap "F-Prime → AMPCS converter" plan
+(porkchop #77, closed as superseded) — no downstream consumer needs AMPCS XML output from F-Prime, so the
+new plan is a JSON-native engine with a shared contract instead.</p>
+<p>Independent, lower-priority items in the same repo:
+- <code>#15</code> SPEC: Dictionary Packaging Contract and Agent-Context Dictionary CLI — not yet labeled
+  <code>ready-for-agent</code>; likely needs its own grilling pass before it's queueable.
+- <code>#14</code> Grill-me: CLI tool for dictionary-aware agents — <code>ready-for-agent</code>, unrelated to the F-Prime chain.
+- <code>#6</code>/<code>#7</code> → <code>#8</code>, <code>#11</code>, <code>#9</code>, <code>#10</code> — SemanticDictionary node-caching implementation (spec done, split
+  into 4 sub-tickets: <code>#8</code> core LRU cache, <code>#11</code> contains/getattr caching, <code>#9</code> lazy <code>__iter__</code> population,
+  <code>#10</code> perf verification). Duplicates <code>#12</code>/<code>#13</code> closed 2026-08-19.</p>
+<h3 id="track-2-demosat-evolution-independent-of-track-1">Track 2 — DemoSat Evolution (independent of Track 1)</h3>
+<p><code>SPEC_demosat_evolution.md</code> / <code>demosat_documentation/roadmap.md</code> define T1–T9. Confirmed no code-level
+coupling to Oxus or to the <code>tts_dictionary_interface</code> F-Prime work exists today (checked both repos for
+cross-references — none found beyond the roadmap narrative). The only link is that a future DemoSat
+Oxus-integration ticket (old T7, not yet filed) would eventually consume Track 1's output — nothing in
+either track blocks the other right now.</p>
+<ul>
+<li><code>demosat_data_utils#8</code> — <strong>T1</strong>: migrate to <code>TtsDataFrame</code> (<code>DemosatChannelFrame</code>, <code>DemosatCommandFrame</code>,
+  <code>DemosatSequenceFrame</code>). Foundational — blocks T2/T3/T4. No open branch. Not started (only <code>evr.py</code> exists
+  from the already-closed T6).</li>
+<li><code>demosat_data_utils#3</code> — separate legacy migration: <code>orbit_events.py</code>, <code>comm_windows.py</code>,
+  <code>ground_stations.py</code>, <code>ephemeris.py</code> from <code>DataContainer</code>/<code>DataItem</code> to <code>TtsDataFrame</code>. Independent of T1
+  (different modules).</li>
+<li><code>demosat_data_utils#7</code> — T11: <code>demosat_dtat</code> starter kit + <code>DemosatLogExplorer</code>. Blocked on T6 (done) and
+  T9 (<code>tts_dtat</code> LogExplorer, not yet filed).</li>
+<li><code>demosat_data_utils#6</code> — T7: deprecation warnings on <code>EvrContainer</code>/<code>EvrItem</code>. Explicitly deferred by
+  prior user request — leave open, don't schedule yet.</li>
+<li><code>demosat_data_utils#4</code> — grill-me: telemetry query layer design (local files + TimescaleDB). Open design
+  question feeding T3; needs its own grilling pass before T3 can be scoped.</li>
+</ul>
+<h3 id="needs-review">Needs review</h3>
+<ul>
+<li><strong><code>tts_dtat</code> downsample/explorer PR chain</strong> — stacked branches, review/merge in order:</li>
+<li>PR #18 (T1–T4: LTTB primitive, <code>PlotOrchestrator</code>, base <code>main</code>)</li>
+<li>PR #23 (T5–T8: interactive zoom re-downsampling, <code>ChannelExplorer</code> widget, base = #18's branch)</li>
+<li>PR #25 (bugfixes: notebook rendering, widget width (#20); LTTB-callback bugs #21/#22 filed but not
+    fully fixed; base = #23's branch). <strong>Despite the branch name (<code>t9-log-explorer</code>), this PR does not
+    implement T9</strong> — T9 (<code>LogExplorer</code>, <code>tts_dtat#19</code>) is still open and unaddressed.</li>
+<li>T9 (<code>tts_dtat#19</code>) still needs its own implementation + PR once #25 merges.
+  Tracked in <code>tts_dtat#24</code> and <code>porkchop#102</code>.</li>
+</ul>
+<h3 id="other-open-tts_core-work-not-yet-triaged-into-a-track">Other open <code>tts_core</code> work (not yet triaged into a track)</h3>
+<ul>
+<li><code>tts_data_utils/docs/roadmap.md</code> item 2 — Visual Diff → <code>TtsDataFrame</code> (top open item in that repo's
+  internal roadmap; items 1 and 3 are done).</li>
+<li><code>.scratch/dict-interface-channel-abc/issues/00-04</code> — Channel ABC design docs, <strong>not yet filed as GitHub
+  issues</strong> anywhere.</li>
+</ul>
+<h3 id="housekeeping-done-2026-08-19">Housekeeping done 2026-08-19</h3>
+<ul>
+<li>Closed <code>demosat_data_utils#5</code> (T6: <code>DemosatEvrFrame</code>) — code already merged to <code>main</code>
+  (branch <code>muszynsk/add_evr_frame</code> had zero diff vs. <code>main</code>).</li>
+<li>Closed <code>tts_dictionary_interface#12</code>/<code>#13</code> as duplicates of <code>#9</code>/<code>#10</code> (accidental double-submit when the
+  caching spec was split into sub-tickets).</li>
+<li><code>porkchop#77</code> (old F-Prime→AMPCS converter ticket) was already closed as superseded by
+  <code>tts_dictionary_interface#16</code>.</li>
+<li><code>tts_dexter</code> <code>muszynsk/df_compat</code> branch (OCO-2 supporting work, DataFrame compat for dispositioners) —
+  opened <code>tts_dexter</code> PR #6 (129 tests pass, 1 xfailed), filed <code>tts_dexter#7</code> for remaining cleanup items
+  from <code>DEV_dexter_dataframe_next_steps.md</code>, and filed <code>porkchop#101</code> to track closing the loop with the
+  user once #6 merges.</li>
 </ul>
               
             </div>
