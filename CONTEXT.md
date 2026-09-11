@@ -176,6 +176,12 @@ from tts_data_utils.invulnerable_data_manager.invulnerable_data_manager import I
 from .data_frame import TtsDataFrame
 ```
 
+### Package initializers and public API
+
+Package initializer policy is repository-specific. Do not assume that every `__init__.py` must be empty, and do not assume that every package should re-export its public API from `__init__.py`. Existing TTS repositories use both patterns.
+
+Before changing a package initializer, inspect the target repository's `AGENTS.md`, `CONTEXT.md`, README, tests, and established import paths. A repository-specific rule overrides this general guidance and must state whether the initializer is empty, declares exports, or performs other initialization. Review agents must preserve that local convention rather than adding exports solely because a ticket requests a public API.
+
 ### Prefer class-based designs
 
 Favor classes that can be subclassed by customer projects over standalone functions. TTS provides bricks, not tools. A class with `classmethod` hooks and overridable methods is almost always better than a function with many parameters, because customer projects can extend it without modifying TTS source.
