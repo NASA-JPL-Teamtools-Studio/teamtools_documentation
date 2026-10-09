@@ -12,7 +12,16 @@ Shared deterministic terms used across TTS repos. Repo-specific language stays i
 
 ## Current terms
 
-*None yet – populate lazily via `/domain-modeling`.*
+**EHA**:
+Engineering and Housekeeping Attributes — continuous time-series telemetry
+channel samples from spacecraft sensors/subsystems (numeric measurements,
+status values, health indicators).
+_Avoid_: channel value, telemetry point (when EHA specifically is meant)
+
+**EVR**:
+Event Record — a discrete FSW log message carrying a severity level,
+distinct from EHA's continuous numeric samples.
+_Avoid_: event, log message (when EVR specifically is meant)
 
 ## Usage
 
