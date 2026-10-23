@@ -41,3 +41,6 @@ requires = [
   "setuptools-scm"
   ]
 build-backend = "setuptools.build_meta"
+
+[tool.tts-ctx]
+type = "incidental"

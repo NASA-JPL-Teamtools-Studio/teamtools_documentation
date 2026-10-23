@@ -30,6 +30,7 @@ nav:
         - First Time Setup for New Projects: collaboration/day_zero_design.md
         - Coding Style: collaboration/styles_et_al.md
       - Documentation Practices: collaboration/documentation.md
+      - Documentation Maintenance: collaboration/documentation_maintenance.md
       - Verification and Validation: collaboration/verification_and_validation.md
       - Testing Practices: collaboration/testing.md
       - CI/CD Policies: collaboration/ci_cd_policy.md

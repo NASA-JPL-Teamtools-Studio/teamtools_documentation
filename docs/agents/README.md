@@ -6,12 +6,13 @@ Per-repo instance data lives in each repo's `docs/agents/README.md`. This centra
 
 ## Contents
 
-- `skill-conventions.md` – Onboarding guidance and triage label vocabulary
-- `repo-map.md` – Mission repos, ownership categories, and `Adapts:` mapping
-- `domain-glossary.md` – Shared deterministic domain terms
-- `issue-tracker-github-ghe.md` – GitHub Enterprise `github.jpl.nasa.gov` conventions
-- `issue-tracker-github-com.md` – GitHub.com conventions
-- `issue-tracker-local.md` – Local markdown `.scratch/` conventions
+- [Skill Conventions](skill-conventions.md) – Onboarding guidance and triage label vocabulary
+- [Documentation Maintenance](../collaboration/documentation_maintenance.md) – Markdown metadata, maturity, traversal, and validation conventions
+- [Repository Map](repo-map.md) – Mission repos, ownership categories, and `Adapts:` mapping
+- [Domain Glossary](domain-glossary.md) – Shared deterministic domain terms
+- [GitHub Enterprise Issue Tracker](issue-tracker-github-ghe.md) – GitHub Enterprise `github.jpl.nasa.gov` conventions
+- [GitHub.com Issue Tracker](issue-tracker-github-com.md) – GitHub.com conventions
+- [Local Issue Tracker](issue-tracker-local.md) – Local markdown `.scratch/` conventions
 
 ## Authoritative maps
 
