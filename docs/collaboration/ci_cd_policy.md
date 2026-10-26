@@ -53,3 +53,5 @@ Bandit and Pip audit go hand in hand. Whereas Pip Audit autids on the library le
 TTS strives to have 100% docstring completion, but this is a never-ending process. Docstring coverage >50% but <80% will be marked as ⚠️, and >80% gets ✅.
 
 This percentage includes a docstring for every method, function and class, with functions and classes getting documentation for every arg and kwarg. Classes get their primary documentation on the \_\_init\_\_ method, which should also have every arg and kwarg documented.
+
+The shared documentation-maintenance contract defines how standards are discovered and how future tooling separates diagnostic reports from strict CI checks. See [Documentation Maintenance](documentation_maintenance.md) for that contract.

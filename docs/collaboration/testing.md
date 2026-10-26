@@ -119,3 +119,5 @@ markers = [
 
 ---
 <a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/collaboration/testing.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>
+
+The shared documentation-maintenance contract defines how agents progressively traverse testing guidance and how future tooling reports documentation and test-quality findings. See [Documentation Maintenance](documentation_maintenance.md) for that contract.
