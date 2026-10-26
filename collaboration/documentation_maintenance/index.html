@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://nasa-jpl-teamtools-studio.github.io/studio/teamtools_documentation/collaboration/documentation_maintenance/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Documentation Maintenance - Teamtools Studio Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Documentation Maintenance";
+        var mkdocs_page_input_path = "collaboration/documentation_maintenance.md";
+        var mkdocs_page_url = "/studio/teamtools_documentation/collaboration/documentation_maintenance/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Teamtools Studio Documentation
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../architecture/">Project Architecture</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../philosophy/">Design Philosophy</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Repositories</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dante/">Dante</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_data_utils/">Data Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dexter/">Dexter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dtat/">DTAT</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_fresh/">FRESH</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_html_utils/">HTML Utilities</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_papertrail/">Papertrail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_tower/">TOWER</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_dictionary_interface/">TTS Dictionary Interface</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_plan/">TTS Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_seq/">TTS Seq</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_starter_template/">TTS Starter Tempalte</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_spice/">TTS Spice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../repositories/tts_utilities/">TTS Utilities</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Collaboration</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../collaboration/">Start here</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fudamental_concepts/">Fundamental Concepts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install/">Initial installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cookbooks/">Cookbooks and Demos</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../style_primer/">Style Primer</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Styles, Norms, and Best Practices</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../day_zero_design/">First Time Setup for New Projects</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../styles_et_al/">Coding Style</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation Practices</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Documentation Maintenance</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#why-this-exists">Why this exists</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#document-metadata">Document metadata</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#document-kinds">Document kinds</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#documentation-maturity">Documentation maturity</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#traversal-and-context">Traversal and context</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#standards-and-policy-identifiers">Standards and policy identifiers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#grooming-responsibilities">Grooming responsibilities</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#progressive-and-exhaustive-validation">Progressive and exhaustive validation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tooling-and-ci-expectations">Tooling and CI expectations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#related-standards">Related standards</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tts-metadata">TTS Metadata</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../verification_and_validation/">Verification and Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ci_cd_policy/">CI/CD Policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../releases/">Releases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../training/">Training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../roadmap/">Roadmap</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../governance/">Governance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../licence/">Licensing</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference Project</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/demosat_description/">DemoSat Reference Project</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/demosat_libraries/">DemoSat Adaptation Libraries</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference_project/fprime/">DemoSat F-Prime Build</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Teamtools Studio Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Collaboration</li>
+      <li class="breadcrumb-item active">Documentation Maintenance</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="documentation-maintenance">Documentation Maintenance</h1>
+<p>This page defines the conventions that make TTS documentation useful to humans and AI agents. It is the central source for Markdown metadata, documentation maturity, progressive traversal, grooming, and context validation.</p>
+<p>Repository-specific documentation may add domain rules, but it must preserve this baseline. Mission safety, operational-authority, and domain guardrails remain authoritative over generic documentation workflows.</p>
+<h2 id="why-this-exists">Why this exists</h2>
+<p>TTS documentation is a workspace, not a pile of independent pages. A human or agent should be able to discover the document hierarchy, choose the smallest useful context, follow local references, and identify which claims are stable enough to trust operationally.</p>
+<p>The documentation-maintenance contract makes those behaviors explicit and gives tooling a deterministic surface to inspect. It does not replace human judgment about whether content is correct or operationally authoritative.</p>
+<h2 id="document-metadata">Document metadata</h2>
+<p>Every Markdown document in an in-scope repository has one visible metadata section at the bottom of the file. The section has this shape:</p>
+<pre><code class="language-markdown">## TTS Metadata
+
+```yaml
+tts:
+  kind: standard
+  maturity: baseline
+  summary: &quot;The one-sentence purpose of this document.&quot;
+  audience:
+    - agent
+    - human
+  related:
+    - docs/collaboration/testing.md
+  policy_ids:
+    - documentation.metadata
+```
+</code></pre>
+<p>The metadata section:</p>
+<ul>
+<li>appears exactly once;</li>
+<li>is the final substantive section of the document;</li>
+<li>uses exactly one fenced <code>yaml</code> block;</li>
+<li>remains visible so a human can inspect it in the rendered documentation;</li>
+<li>is ordinary Markdown and does not require a MkDocs plugin;</li>
+<li>uses repository-relative paths for local references; and</li>
+<li>must not be confused with YAML examples elsewhere in the document.</li>
+</ul>
+<p>The initial universal fields are:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Requirement</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kind</code></td>
+<td>Required</td>
+<td>What role the document plays in the documentation corpus.</td>
+</tr>
+<tr>
+<td><code>maturity</code></td>
+<td>Required</td>
+<td>How complete and operationally trusted the document is.</td>
+</tr>
+<tr>
+<td><code>summary</code></td>
+<td>Required</td>
+<td>A concise description of the document's purpose.</td>
+</tr>
+<tr>
+<td><code>audience</code></td>
+<td>Optional initially</td>
+<td>The readers or agents the document serves.</td>
+</tr>
+<tr>
+<td><code>related</code></td>
+<td>Optional initially</td>
+<td>Repository-relative documents that provide useful neighboring context.</td>
+</tr>
+<tr>
+<td><code>policy_ids</code></td>
+<td>Optional initially</td>
+<td>Stable standards or policy rules explained by the document.</td>
+</tr>
+</tbody>
+</table>
+<p>Fields may become required for particular document kinds as the schema evolves. A missing optional field is not equivalent to malformed metadata.</p>
+<h3 id="document-kinds">Document kinds</h3>
+<p>The initial <code>kind</code> vocabulary is:</p>
+<ul>
+<li><code>standard</code> — a normative convention or policy;</li>
+<li><code>guide</code> — procedural or explanatory instruction;</li>
+<li><code>reference</code> — factual material consulted while working;</li>
+<li><code>repository</code> — documentation about a repository or library;</li>
+<li><code>glossary</code> — definitions and terminology;</li>
+<li><code>roadmap</code> — planned or proposed future work; and</li>
+<li><code>incidental</code> — material in scope for inventory but not intended to define a standard.</li>
+</ul>
+<p>Repositories may add a more specific kind only through an update to this central convention.</p>
+<h2 id="documentation-maturity">Documentation maturity</h2>
+<p><code>maturity</code> is a human-owned lifecycle value. Tooling validates the value and reports contradictions, but never changes it or automatically promotes or demotes a document.</p>
+<table>
+<thead>
+<tr>
+<th>Maturity</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draft</code></td>
+<td>Anything goes. The content may be vibe-coded, exploratory, incomplete, or merely scaffolding. It must not be treated as authoritative.</td>
+</tr>
+<tr>
+<td><code>preliminary</code></td>
+<td>The document is complete enough to be coherent, but remains under active work.</td>
+</tr>
+<tr>
+<td><code>baseline</code></td>
+<td>The document is close to complete, but active liens may still cause meaningful changes.</td>
+</tr>
+<tr>
+<td><code>released</code></td>
+<td>The document is operationally trusted and highly stable. Changes remain possible, but should be rare and receive additional review.</td>
+</tr>
+<tr>
+<td><code>retired</code></td>
+<td>The document is no longer in use and is retained for historical purposes.</td>
+</tr>
+</tbody>
+</table>
+<p>A document may be structurally complete without being operationally trusted. Conversely, a released document may still receive a deterministic finding if its current contents no longer satisfy the published contract.</p>
+<p>A document declaring <code>released</code> should have:</p>
+<ul>
+<li>valid metadata;</li>
+<li>no blocking deterministic findings; and</li>
+<li>named human or SME review evidence.</li>
+</ul>
+<p>Tooling can verify the first two conditions and report the third as declared evidence. It cannot establish operational authority by itself.</p>
+<p>Existing warnings such as <code>Draft — SME review needed</code> remain part of the document until a human changes them. A tooling report should identify disagreement between a warning and declared maturity rather than deleting or rewriting either one.</p>
+<h2 id="traversal-and-context">Traversal and context</h2>
+<p>Documentation tools should support the same progressive reading path a person would use:</p>
+<ol>
+<li>inspect the document tree;</li>
+<li>inspect a page outline;</li>
+<li>choose a heading or section;</li>
+<li>follow relevant local links; and</li>
+<li>read the complete document when the question requires it.</li>
+</ol>
+<p>The traversal vocabulary is:</p>
+<ul>
+<li><strong>tree</strong> — the documents available in a selected scope and their hierarchy;</li>
+<li><strong>outline</strong> — headings and nesting for one document;</li>
+<li><strong>section</strong> — the content under a selected heading;</li>
+<li><strong>follow</strong> — resolution of a local Markdown link; </li>
+<li><strong>search</strong> — matching text, headings, metadata, and links; and</li>
+<li><strong>read</strong> — the complete document.</li>
+</ul>
+<p><code>outline</code> depth maps directly to Markdown heading levels:</p>
+<ul>
+<li>depth 1 includes <code>#</code> headings;</li>
+<li>depth 2 includes <code>#</code> and <code>##</code> headings; and</li>
+<li>depth 3 includes <code>#</code>, <code>##</code>, and <code>###</code> headings.</li>
+</ul>
+<p>Traversal follows relative local Markdown links and reports external links without fetching them. Network access must not be required for deterministic documentation analysis. Results should preserve the source path, heading, section, and anchor information needed to cite the context that was read.</p>
+<h2 id="standards-and-policy-identifiers">Standards and policy identifiers</h2>
+<p>A document may use <code>policy_ids</code> to identify the stable standards or policy rules it explains. Document metadata identifies the relationship; it does not replace the explanatory prose.</p>
+<p>Markdown remains the human- and agent-facing explanation of a rule. Deterministic tooling may use a separate machine-readable policy projection for thresholds, rule identifiers, and parameters. If the explanation and projection disagree, tooling reports the drift with evidence for human resolution rather than silently rewriting either source.</p>
+<p>Policy identifiers should be stable, specific, and reusable across reports. They should identify a rule, not merely repeat a page title.</p>
+<h2 id="grooming-responsibilities">Grooming responsibilities</h2>
+<p>The centralized documentation-grooming skills in <code>tts_ci_cd</code> own generic metadata, traversal, link, policy-synchronization, and validation mechanics. They may:</p>
+<ul>
+<li>repair deterministic formatting and schema errors;</li>
+<li>normalize known enum values and repository-relative paths;</li>
+<li>report missing metadata, broken links, and policy drift; and</li>
+<li>propose classifications or relationships for human review.</li>
+</ul>
+<p>They must not:</p>
+<ul>
+<li>change a document's maturity;</li>
+<li>certify operational authority;</li>
+<li>erase mission-specific warnings;</li>
+<li>override safety or operational-authority guardrails; or</li>
+<li>fetch external links as part of deterministic analysis.</li>
+</ul>
+<p>Central generic conventions override conflicting generic local conventions. Repository and mission documentation may add constraints and domain meaning. Agents must preserve those local safety and authority rules while applying the central documentation contract.</p>
+<p>When a repository has pre-existing changes, grooming requires explicit confirmation before modifying the checkout and must make the pre-existing change set distinguishable from generated changes.</p>
+<h2 id="progressive-and-exhaustive-validation">Progressive and exhaustive validation</h2>
+<p>A documentation corpus should be useful when read progressively, not only when every page is loaded at once. Validation therefore compares two context modes:</p>
+<ul>
+<li><strong>progressive context</strong> — the tree, outline, selected sections, and links an agent would normally follow; and</li>
+<li><strong>exhaustive context</strong> — the complete available Markdown corpus for the same scope.</li>
+</ul>
+<p>Validation compares:</p>
+<ol>
+<li>structural facts, which require exact equality;</li>
+<li>cited evidence, which should overlap when the conclusion is the same; and</li>
+<li>answers to a versioned question set.</li>
+</ol>
+<p>Results are classified as:</p>
+<ul>
+<li><code>equivalent</code> — the contexts support the same conclusion and sufficient evidence;</li>
+<li><code>divergent</code> — the contexts support different conclusions or materially different evidence; or</li>
+<li><code>indeterminate</code> — the comparison cannot establish equivalence reliably.</li>
+</ul>
+<p>Generic questions are maintained centrally. Repository-specific question sets may add mission or domain questions. AI-assisted comparison can provide useful evidence, but it is advisory until its behavior is shown to be stable; deterministic structural checks remain the foundation.</p>
+<h2 id="tooling-and-ci-expectations">Tooling and CI expectations</h2>
+<p>The documentation-maintenance contract is designed for both library and CLI use. A future <code>tts-ctx</code> implementation should expose the same behavior through a shared analysis interface and produce human-readable Markdown plus versioned machine-readable results.</p>
+<p>Report mode should explain findings and next steps without treating every below-target metric as a failure. An explicit strict mode may apply documented thresholds for CI. GitHub Action enforcement should be added only after this contract and its migration workflow have been exercised against central, core, and mission documentation.</p>
+<p>The existing MkDocs setup remains the publication path. Metadata is visible fenced Markdown, not front matter, so this convention does not require a front-matter plugin or a change to the existing navigation and theme.</p>
+<h2 id="related-standards">Related standards</h2>
+<ul>
+<li><a href="../documentation/">Documentation practices</a></li>
+<li><a href="../testing/">Testing practices</a></li>
+<li><a href="../ci_cd_policy/">CI/CD policies</a></li>
+<li><a href="../../agents/">Agent skills and central conventions</a></li>
+<li><a href="../../philosophy/">Design philosophy</a></li>
+</ul>
+<hr />
+<p><a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/collaboration/documentation_maintenance.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a></p>
+<h2 id="tts-metadata">TTS Metadata</h2>
+<pre><code class="language-yaml">tts:
+  kind: standard
+  maturity: baseline
+  summary: &quot;Standards for maintaining TTS Markdown documentation for humans and AI agents.&quot;
+  audience:
+    - agent
+    - human
+    - reviewer
+  related:
+    - docs/collaboration/documentation.md
+    - docs/collaboration/testing.md
+    - docs/collaboration/ci_cd_policy.md
+  policy_ids:
+    - documentation.metadata
+    - documentation.maturity
+    - documentation.traversal
+    - documentation.context_validation
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../documentation/" class="btn btn-neutral float-left" title="Documentation Practices"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../verification_and_validation/" class="btn btn-neutral float-right" title="Verification and Validation">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../documentation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../verification_and_validation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

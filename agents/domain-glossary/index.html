@@ -104,6 +104,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../collaboration/documentation/">Documentation Practices</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/documentation_maintenance/">Documentation Maintenance</a>
+                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../collaboration/verification_and_validation/">Verification and Validation</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../collaboration/testing/">Testing Practices</a>
@@ -163,7 +165,15 @@
 <li>Link to ADR when term is decision-driven.</li>
 </ul>
 <h2 id="current-terms">Current terms</h2>
-<p><em>None yet – populate lazily via <code>/domain-modeling</code>.</em></p>
+<p><strong>EHA</strong>:
+Engineering and Housekeeping Attributes — continuous time-series telemetry
+channel samples from spacecraft sensors/subsystems (numeric measurements,
+status values, health indicators).
+<em>Avoid</em>: channel value, telemetry point (when EHA specifically is meant)</p>
+<p><strong>EVR</strong>:
+Event Record — a discrete FSW log message carrying a severity level,
+distinct from EHA's continuous numeric samples.
+<em>Avoid</em>: event, log message (when EVR specifically is meant)</p>
 <h2 id="usage">Usage</h2>
 <p>When naming concepts in issues, refactor proposals, tests, use the term as defined here or in the owning repo's <code>CONTEXT.md</code>. If a term is missing, note it for <code>/domain-modeling</code> rather than inventing new language.</p>
 <h2 id="maintenance">Maintenance</h2>

@@ -104,11 +104,15 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#they-dont-charge-you-for-extra-characters">They don't charge you for extra characters</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exception-handling">Exception handling</a>
+    </li>
     </ul>
                 </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation Practices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_maintenance/">Documentation Maintenance</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../verification_and_validation/">Verification and Validation</a>
                   </li>
@@ -176,6 +180,17 @@ comments, variable names, and logic statements. When you are unsure, err on the 
 compactness. This also has the added benefit of keeping fewer pieces of information in human brains and creating
 less room for error. PWR should be POWER. CMD should be COMMAND. It is not followed dogmatically in the codebase,
 but it should be considered as you write code.</p>
+<h2 id="exception-handling">Exception handling</h2>
+<p>Catch the narrowest acceptable set of exceptions for the operation.</p>
+<ul>
+<li>Catch a specific exception when the recovery action is specific to that exception.</li>
+<li>Catch several specific exceptions together only when the recovery action is the same for all of them.</li>
+<li>Do not use a bare <code>except</code> or catch <code>Exception</code> when a narrower set is acceptable.</li>
+<li>Catch a broad exception only at a deliberate boundary, such as a process, CLI, or batch-item boundary. Document the boundary and preserve actionable error evidence.</li>
+<li>Do not hide an exception without a clear recovery action, a report, or a re-raise.</li>
+<li>Use context managers or <code>finally</code> for cleanup. Do not use broad exception handling as a substitute for cleanup design.</li>
+</ul>
+<p>The purpose of this rule is to prevent unrelated failures from being treated as the same condition. It keeps recovery behavior predictable and keeps error evidence available to humans and agents.</p>
 <hr />
 <p><a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/collaboration/styles_et_al.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a></p>
               
