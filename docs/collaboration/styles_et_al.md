@@ -16,5 +16,18 @@ compactness. This also has the added benefit of keeping fewer pieces of informat
 less room for error. PWR should be POWER. CMD should be COMMAND. It is not followed dogmatically in the codebase,
 but it should be considered as you write code.
 
+## Exception handling
+
+Catch the narrowest acceptable set of exceptions for the operation.
+
+- Catch a specific exception when the recovery action is specific to that exception.
+- Catch several specific exceptions together only when the recovery action is the same for all of them.
+- Do not use a bare `except` or catch `Exception` when a narrower set is acceptable.
+- Catch a broad exception only at a deliberate boundary, such as a process, CLI, or batch-item boundary. Document the boundary and preserve actionable error evidence.
+- Do not hide an exception without a clear recovery action, a report, or a re-raise.
+- Use context managers or `finally` for cleanup. Do not use broad exception handling as a substitute for cleanup design.
+
+The purpose of this rule is to prevent unrelated failures from being treated as the same condition. It keeps recovery behavior predictable and keeps error evidence available to humans and agents.
+
 ---
 <a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/collaboration/styles_et_al.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>
