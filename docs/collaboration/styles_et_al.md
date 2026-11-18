@@ -29,5 +29,15 @@ Catch the narrowest acceptable set of exceptions for the operation.
 
 The purpose of this rule is to prevent unrelated failures from being treated as the same condition. It keeps recovery behavior predictable and keeps error evidence available to humans and agents.
 
+## Import placement
+
+As a general rule, put library imports at the top of the file, after the module docstring and before other executable code.
+
+- Keep imports together so dependencies are easy to see.
+- Avoid importing a library inside a function, method, or conditional block when a top-level import is suitable.
+- An import in another location can be acceptable when it is needed to prevent a dependency cycle, delay an optional dependency, reduce startup cost, or support a clear runtime boundary. Keep the reason clear in the surrounding code.
+
+This guidance makes dependencies easier to review and keeps module behavior more predictable. It is a recommendation, not an absolute prohibition on local imports.
+
 ---
 <a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/collaboration/styles_et_al.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a>
