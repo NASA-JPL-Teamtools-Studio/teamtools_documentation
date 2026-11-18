@@ -106,6 +106,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#exception-handling">Exception handling</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#import-placement">Import placement</a>
+    </li>
     </ul>
                 </li>
     </ul>
@@ -191,6 +193,14 @@ but it should be considered as you write code.</p>
 <li>Use context managers or <code>finally</code> for cleanup. Do not use broad exception handling as a substitute for cleanup design.</li>
 </ul>
 <p>The purpose of this rule is to prevent unrelated failures from being treated as the same condition. It keeps recovery behavior predictable and keeps error evidence available to humans and agents.</p>
+<h2 id="import-placement">Import placement</h2>
+<p>As a general rule, put library imports at the top of the file, after the module docstring and before other executable code.</p>
+<ul>
+<li>Keep imports together so dependencies are easy to see.</li>
+<li>Avoid importing a library inside a function, method, or conditional block when a top-level import is suitable.</li>
+<li>An import in another location can be acceptable when it is needed to prevent a dependency cycle, delay an optional dependency, reduce startup cost, or support a clear runtime boundary. Keep the reason clear in the surrounding code.</li>
+</ul>
+<p>This guidance makes dependencies easier to review and keeps module behavior more predictable. It is a recommendation, not an absolute prohibition on local imports.</p>
 <hr />
 <p><a href="https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/collaboration/styles_et_al.md" target="_blank" rel="noopener noreferrer">Edit/Comment on GitHub</a></p>
               
